@@ -219,11 +219,7 @@ function Index() {
             <div className="md:col-span-2">
               <h5 className="font-bold text-xs uppercase tracking-widest mb-6">Service Coverage</h5>
               <ul className="text-sm text-foreground/60 space-y-3 font-mono">
-                <li>Maharashtra (HQ)</li>
-                <li>Delhi / NCR</li>
-                <li>Karnataka / BLR</li>
-                <li>Gujarat / ADI</li>
-                <li>Tamil Nadu / CHN</li>
+                <li>Maharashtra</li>
               </ul>
             </div>
             <div className="md:col-span-3">
@@ -232,7 +228,7 @@ function Index() {
                 Star Recidency, Malinagar 301
               </p>
               <p className="text-sm font-bold">9322662939</p>
-              <p className="text-sm text-primary font-mono">dispatch@vivektransportt.com</p>
+              <p className="text-sm text-primary font-mono">vivektransportt@gmail.com</p>
             </div>
             <div className="md:col-span-3">
               <h5 className="font-bold text-xs uppercase tracking-widest mb-6">Founder</h5>
@@ -248,6 +244,9 @@ function Index() {
                 <div className="pt-1">
                   <div className="font-display text-3xl tracking-wide leading-tight">VIVEK TAWARE</div>
                   <div className="text-primary font-bold uppercase tracking-widest text-xs mt-2">Founder</div>
+                  <div className="text-sm text-foreground/60 mt-3 leading-relaxed">
+                    Entrepreneur with a vision to modernize logistics across Maharashtra.
+                  </div>
                 </div>
               </div>
             </div>
