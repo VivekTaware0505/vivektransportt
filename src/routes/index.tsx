@@ -27,7 +27,7 @@ function Index() {
         <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
           <Logo className="text-2xl" />
           <div className="hidden md:flex gap-8 text-xs font-semibold uppercase tracking-widest">
-            <a href="#fleet" className="hover:text-primary transition-colors">Fleet</a>
+            <a href="#fleet" className="hover:text-primary transition-colors">Truck</a>
             <a href="#partner" className="hover:text-primary transition-colors">Partner</a>
             <a href="#how" className="hover:text-primary transition-colors">How it Works</a>
             <a href="#contact" className="hover:text-primary transition-colors">Contact</a>
