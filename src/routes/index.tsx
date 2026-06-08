@@ -27,7 +27,7 @@ function Index() {
         <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
           <Logo className="text-2xl" />
           <div className="hidden md:flex gap-8 text-xs font-semibold uppercase tracking-widest">
-            <a href="#fleet" className="hover:text-primary transition-colors">Fleet</a>
+            <a href="#fleet" className="hover:text-primary transition-colors">Truck</a>
             <a href="#partner" className="hover:text-primary transition-colors">Partner</a>
             <a href="#how" className="hover:text-primary transition-colors">How it Works</a>
             <a href="#contact" className="hover:text-primary transition-colors">Contact</a>
@@ -60,7 +60,7 @@ function Index() {
                 <div className="text-[10px] uppercase tracking-widest opacity-60">Live Support</div>
               </div>
               <div className="border-l border-border pl-6">
-                <div className="font-mono text-2xl font-bold">12.5%</div>
+                <div className="font-mono text-2xl font-bold">4%</div>
                 <div className="text-[10px] uppercase tracking-widest opacity-60">Owner Commission</div>
               </div>
             </div>
@@ -138,7 +138,7 @@ function Index() {
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex justify-between items-end mb-12">
             <div>
-              <h3 className="font-display text-5xl">THE FLEET</h3>
+              <h3 className="font-display text-5xl">THE TRUCK</h3>
               <p className="text-background/50 font-mono text-xs uppercase">Available for immediate dispatch</p>
             </div>
             <a href="#contact" className="hidden md:block text-primary font-bold tracking-tighter">→ VIEW ALL VEHICLES</a>
@@ -174,18 +174,18 @@ function Index() {
             <img src={partnerDriver} alt="Vivek Transportt fleet partner" width={1024} height={1024} loading="lazy" className="w-full aspect-square object-cover border border-border shadow-2xl" />
             <div className="absolute -bottom-6 -right-6 bg-primary text-white p-8 max-w-xs">
               <p className="font-display text-2xl leading-tight">"I increased my monthly revenue by 40% since joining Vivek Transportt."</p>
-              <div className="mt-4 font-mono text-xs">— RAJESH K., FLEET OWNER</div>
+              <div className="mt-4 font-mono text-xs">— RAJESH K., TRUCK OWNER</div>
             </div>
           </div>
           <div>
             <span className="text-primary font-bold uppercase tracking-widest text-xs">Truck Owner Program</span>
-            <h2 className="text-6xl font-display mt-4 mb-6 leading-none italic">EARN WITH <br />YOUR FLEET</h2>
+            <h2 className="text-6xl font-display mt-4 mb-6 leading-none italic">EARN WITH <br />YOUR TRUCK</h2>
             <p className="text-foreground/70 mb-8 max-w-md">Add your truck to Vivek Transportt and start receiving bookings within 48 hours. We run on a transparent commission model — you keep the rest.</p>
             <ul className="space-y-6 mb-10">
               {[
                 { n: "01", t: "Guaranteed Backhauls", d: "Never drive an empty truck. We optimize your return journeys." },
                 { n: "02", t: "Timely Payments", d: "Get paid within 48 hours of delivery completion. No hassles." },
-                { n: "03", t: "Transparent Commission", d: "Fixed 12.5% commission on successful bookings. That's it." },
+                { n: "03", t: "Transparent Commission", d: "Fixed 4% commission on successful bookings. That's it." },
               ].map((b) => (
                 <li key={b.n} className="flex gap-4">
                   <span className="bg-foreground text-background size-6 rounded-full flex items-center justify-center font-mono text-xs font-bold shrink-0">{b.n}</span>
@@ -219,7 +219,14 @@ function Index() {
             <div className="md:col-span-2">
               <h5 className="font-bold text-xs uppercase tracking-widest mb-6">Service Coverage</h5>
               <ul className="text-sm text-foreground/60 space-y-3 font-mono">
-                <li>Maharashtra</li>
+                <li>Mumbai</li>
+                <li>Pune</li>
+                <li>Nagpur</li>
+                <li>Nashik</li>
+                <li>Thane</li>
+                <li>Aurangabad</li>
+                <li>Kolhapur</li>
+                <li>Solapur</li>
               </ul>
             </div>
             <div className="md:col-span-3">
