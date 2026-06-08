@@ -204,8 +204,8 @@ function Index() {
       {/* Footer */}
       <footer id="contact" className="bg-background pt-20 pb-10 border-t-4 border-foreground">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="grid md:grid-cols-4 gap-12 mb-20">
-            <div className="col-span-2">
+          <div className="grid md:grid-cols-12 gap-12 mb-20">
+            <div className="md:col-span-4">
               <Logo className="text-4xl mb-6" />
               <p className="text-sm text-foreground/60 max-w-sm mb-6">
                 Standardizing India's fragmented logistics sector through technology, transparency, and top-tier service.
@@ -216,7 +216,7 @@ function Index() {
                 ))}
               </div>
             </div>
-            <div>
+            <div className="md:col-span-2">
               <h5 className="font-bold text-xs uppercase tracking-widest mb-6">Service Coverage</h5>
               <ul className="text-sm text-foreground/60 space-y-3 font-mono">
                 <li>Maharashtra (HQ)</li>
@@ -226,13 +226,30 @@ function Index() {
                 <li>Tamil Nadu / CHN</li>
               </ul>
             </div>
-            <div>
+            <div className="md:col-span-3">
               <h5 className="font-bold text-xs uppercase tracking-widest mb-6">Contact</h5>
               <p className="text-sm text-foreground/60 mb-4">
-                Plot 42, Logistics Hub, Kalamboli, Navi Mumbai, 410218
+                Star Recidency, Malinagar 301
               </p>
-              <p className="text-sm font-bold">1800-419-5050</p>
+              <p className="text-sm font-bold">9322662939</p>
               <p className="text-sm text-primary font-mono">dispatch@vivektransportt.com</p>
+            </div>
+            <div className="md:col-span-3">
+              <h5 className="font-bold text-xs uppercase tracking-widest mb-6">Founder</h5>
+              <div className="flex items-start gap-5">
+                <img
+                  src={founderAsset.url}
+                  alt="Vivek Taware, Founder"
+                  width={120}
+                  height={120}
+                  loading="lazy"
+                  className="w-28 h-28 object-cover border-2 border-primary shrink-0"
+                />
+                <div className="pt-1">
+                  <div className="font-display text-3xl tracking-wide leading-tight">VIVEK TAWARE</div>
+                  <div className="text-primary font-bold uppercase tracking-widest text-xs mt-2">Founder</div>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -245,24 +262,6 @@ function Index() {
           </div>
         </div>
       </footer>
-
-      {/* Founder Corner */}
-      <div className="fixed bottom-6 right-6 z-40 animate-entry">
-        <div className="bg-foreground text-white border-2 border-primary shadow-2xl p-4 flex items-center gap-4 max-w-xs">
-          <img
-            src={founderAsset.url}
-            alt="Vivek Taware, Founder of Vivek Transportt"
-            width={64}
-            height={64}
-            loading="lazy"
-            className="size-16 object-cover border-2 border-primary shrink-0"
-          />
-          <div>
-            <div className="text-primary font-bold uppercase tracking-widest text-[10px]">Founder & CEO</div>
-            <div className="font-display text-lg tracking-wide leading-tight">VIVEK TAWARE</div>
-          </div>
-        </div>
-      </div>
     </div>
   );
 }
