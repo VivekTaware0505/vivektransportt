@@ -185,7 +185,7 @@ function Index() {
               {[
                 { n: "01", t: "Guaranteed Backhauls", d: "Never drive an empty truck. We optimize your return journeys." },
                 { n: "02", t: "Timely Payments", d: "Get paid within 48 hours of delivery completion. No hassles." },
-                { n: "03", t: "Transparent Commission", d: "Fixed 12.5% commission on successful bookings. That's it." },
+                { n: "03", t: "Transparent Commission", d: "Fixed 4% commission on successful bookings. That's it." },
               ].map((b) => (
                 <li key={b.n} className="flex gap-4">
                   <span className="bg-foreground text-background size-6 rounded-full flex items-center justify-center font-mono text-xs font-bold shrink-0">{b.n}</span>
