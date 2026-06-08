@@ -60,7 +60,7 @@ function Index() {
                 <div className="text-[10px] uppercase tracking-widest opacity-60">Live Support</div>
               </div>
               <div className="border-l border-border pl-6">
-                <div className="font-mono text-2xl font-bold">12.5%</div>
+                <div className="font-mono text-2xl font-bold">4%</div>
                 <div className="text-[10px] uppercase tracking-widest opacity-60">Owner Commission</div>
               </div>
             </div>
