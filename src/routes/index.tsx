@@ -174,7 +174,7 @@ function Index() {
             <img src={partnerDriver} alt="Vivek Transportt fleet partner" width={1024} height={1024} loading="lazy" className="w-full aspect-square object-cover border border-border shadow-2xl" />
             <div className="absolute -bottom-6 -right-6 bg-primary text-white p-8 max-w-xs">
               <p className="font-display text-2xl leading-tight">"I increased my monthly revenue by 40% since joining Vivek Transportt."</p>
-              <div className="mt-4 font-mono text-xs">— RAJESH K., FLEET OWNER</div>
+              <div className="mt-4 font-mono text-xs">— RAJESH K., TRUCK OWNER</div>
             </div>
           </div>
           <div>
