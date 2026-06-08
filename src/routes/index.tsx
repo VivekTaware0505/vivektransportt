@@ -138,7 +138,7 @@ function Index() {
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex justify-between items-end mb-12">
             <div>
-              <h3 className="font-display text-5xl">THE FLEET</h3>
+              <h3 className="font-display text-5xl">THE TRUCK</h3>
               <p className="text-background/50 font-mono text-xs uppercase">Available for immediate dispatch</p>
             </div>
             <a href="#contact" className="hidden md:block text-primary font-bold tracking-tighter">→ VIEW ALL VEHICLES</a>
