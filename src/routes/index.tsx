@@ -179,7 +179,7 @@ function Index() {
           </div>
           <div>
             <span className="text-primary font-bold uppercase tracking-widest text-xs">Truck Owner Program</span>
-            <h2 className="text-6xl font-display mt-4 mb-6 leading-none italic">EARN WITH <br />YOUR FLEET</h2>
+            <h2 className="text-6xl font-display mt-4 mb-6 leading-none italic">EARN WITH <br />YOUR TRUCK</h2>
             <p className="text-foreground/70 mb-8 max-w-md">Add your truck to Vivek Transportt and start receiving bookings within 48 hours. We run on a transparent commission model — you keep the rest.</p>
             <ul className="space-y-6 mb-10">
               {[
