@@ -219,7 +219,14 @@ function Index() {
             <div className="md:col-span-2">
               <h5 className="font-bold text-xs uppercase tracking-widest mb-6">Service Coverage</h5>
               <ul className="text-sm text-foreground/60 space-y-3 font-mono">
-                <li>Maharashtra</li>
+                <li>Mumbai</li>
+                <li>Pune</li>
+                <li>Nagpur</li>
+                <li>Nashik</li>
+                <li>Thane</li>
+                <li>Aurangabad</li>
+                <li>Kolhapur</li>
+                <li>Solapur</li>
               </ul>
             </div>
             <div className="md:col-span-3">
