@@ -3,6 +3,8 @@ import truck32 from "@/assets/truck-32ft.jpg";
 import truck14 from "@/assets/truck-14ft.jpg";
 import truckAce from "@/assets/truck-ace.jpg";
 import partnerDriver from "@/assets/partner-driver.jpg";
+import founderAsset from "@/assets/vivek-taware.jpg.asset.json";
+
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -202,6 +204,25 @@ function Index() {
       {/* Footer */}
       <footer id="contact" className="bg-background pt-20 pb-10 border-t-4 border-foreground">
         <div className="max-w-7xl mx-auto px-4">
+          {/* Founder Card */}
+          <div className="mb-16 grid md:grid-cols-[auto_1fr] gap-8 items-center bg-foreground text-white p-8 border-2 border-foreground">
+            <img
+              src={founderAsset.url}
+              alt="Vivek Taware, Founder of Vivek Transportt"
+              width={160}
+              height={160}
+              loading="lazy"
+              className="size-40 object-cover border-4 border-primary"
+            />
+            <div>
+              <span className="text-primary font-bold uppercase tracking-widest text-xs">Founder & CEO</span>
+              <h3 className="font-display text-5xl mt-2 mb-3 tracking-wide">VIVEK TAWARE</h3>
+              <p className="text-sm text-white/70 max-w-xl">
+                "I started Vivek Transportt to fix what I saw broken in Indian logistics — opaque pricing, idle trucks, and stressed shippers. We're building a transparent marketplace where every parcel moves on time and every truck owner earns fairly."
+              </p>
+            </div>
+          </div>
+
           <div className="grid md:grid-cols-4 gap-12 mb-20">
             <div className="col-span-2">
               <Logo className="text-4xl mb-6" />
@@ -233,6 +254,7 @@ function Index() {
               <p className="text-sm text-primary font-mono">dispatch@vivektransportt.com</p>
             </div>
           </div>
+
           <div className="pt-10 border-t border-border flex flex-col md:flex-row justify-between items-center gap-6">
             <p className="text-[10px] uppercase font-mono tracking-widest opacity-40">© 2024 VIVEK TRANSPORTT LOGISTICS PVT LTD. ALL RIGHTS RESERVED.</p>
             <div className="flex gap-8 text-[10px] font-bold uppercase tracking-widest">
