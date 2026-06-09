@@ -93,6 +93,38 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@400;600&display=swap" },
       { rel: "stylesheet", href: appCss },
+      { rel: "canonical", href: "https://vivektransportt.lovable.app/" },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          name: "Vivek Transportt",
+          url: "https://vivektransportt.lovable.app/",
+          email: "vivektransportt@gmail.com",
+          telephone: "+91-9322662939",
+          founder: { "@type": "Person", name: "Vivek Taware" },
+          areaServed: { "@type": "State", name: "Maharashtra" },
+          address: {
+            "@type": "PostalAddress",
+            streetAddress: "Star Recidency, Malinagar 301",
+            addressRegion: "Maharashtra",
+            addressCountry: "IN",
+          },
+        }),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Service",
+          serviceType: "Truck Booking & Logistics",
+          provider: { "@type": "Organization", name: "Vivek Transportt" },
+          areaServed: ["Mumbai", "Pune", "Nagpur", "Nashik", "Thane", "Aurangabad", "Kolhapur", "Solapur"],
+        }),
+      },
     ],
   }),
 

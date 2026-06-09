@@ -39,6 +39,7 @@ function Index() {
         </div>
       </nav>
 
+      <main>
       {/* Hero */}
       <section className="relative py-12 md:py-20 overflow-hidden border-b border-border">
         <div className="max-w-7xl mx-auto px-4 grid lg:grid-cols-12 gap-12 items-start">
@@ -72,21 +73,21 @@ function Index() {
             <form className="space-y-4" onSubmit={(e) => { e.preventDefault(); alert("Thanks! Our team will call you with the best quote shortly."); }}>
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-1">
-                  <label className="text-[10px] font-bold uppercase tracking-wider opacity-50">Pickup City</label>
-                  <input required type="text" placeholder="Mumbai, MH" className="w-full border border-border p-3 text-sm focus:outline-none focus:border-primary" />
+                  <label htmlFor="qq-pickup" className="text-[10px] font-bold uppercase tracking-wider opacity-50">Pickup City</label>
+                  <input id="qq-pickup" required type="text" placeholder="Mumbai, MH" className="w-full border border-border p-3 text-sm focus:outline-none focus:border-primary" />
                 </div>
                 <div className="space-y-1">
-                  <label className="text-[10px] font-bold uppercase tracking-wider opacity-50">Drop City</label>
-                  <input required type="text" placeholder="Delhi, NCR" className="w-full border border-border p-3 text-sm focus:outline-none focus:border-primary" />
+                  <label htmlFor="qq-drop" className="text-[10px] font-bold uppercase tracking-wider opacity-50">Drop City</label>
+                  <input id="qq-drop" required type="text" placeholder="Delhi, NCR" className="w-full border border-border p-3 text-sm focus:outline-none focus:border-primary" />
                 </div>
               </div>
               <div className="space-y-1">
-                <label className="text-[10px] font-bold uppercase tracking-wider opacity-50">Parcel / Goods Type</label>
-                <input required type="text" placeholder="Furniture, FMCG, Industrial..." className="w-full border border-border p-3 text-sm focus:outline-none focus:border-primary" />
+                <label htmlFor="qq-goods" className="text-[10px] font-bold uppercase tracking-wider opacity-50">Parcel / Goods Type</label>
+                <input id="qq-goods" required type="text" placeholder="Furniture, FMCG, Industrial..." className="w-full border border-border p-3 text-sm focus:outline-none focus:border-primary" />
               </div>
               <div className="space-y-1">
-                <label className="text-[10px] font-bold uppercase tracking-wider opacity-50">Truck Type</label>
-                <select className="w-full border border-border p-3 text-sm focus:outline-none appearance-none bg-card">
+                <label htmlFor="qq-truck" className="text-[10px] font-bold uppercase tracking-wider opacity-50">Truck Type</label>
+                <select id="qq-truck" className="w-full border border-border p-3 text-sm focus:outline-none appearance-none bg-card">
                   <option>Tata Ace Mini (850 kg)</option>
                   <option>14ft Eicher (4 Ton)</option>
                   <option>20ft Container (7 Ton)</option>
@@ -95,12 +96,12 @@ function Index() {
               </div>
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-1">
-                  <label className="text-[10px] font-bold uppercase tracking-wider opacity-50">Date of Loading</label>
-                  <input required type="date" className="w-full border border-border p-3 text-sm focus:outline-none focus:border-primary" />
+                  <label htmlFor="qq-date" className="text-[10px] font-bold uppercase tracking-wider opacity-50">Date of Loading</label>
+                  <input id="qq-date" required type="date" className="w-full border border-border p-3 text-sm focus:outline-none focus:border-primary" />
                 </div>
                 <div className="space-y-1">
-                  <label className="text-[10px] font-bold uppercase tracking-wider opacity-50">Mobile</label>
-                  <input required type="tel" placeholder="+91 98xxx xxxxx" className="w-full border border-border p-3 text-sm focus:outline-none focus:border-primary" />
+                  <label htmlFor="qq-mobile" className="text-[10px] font-bold uppercase tracking-wider opacity-50">Mobile</label>
+                  <input id="qq-mobile" required type="tel" placeholder="+91 98xxx xxxxx" className="w-full border border-border p-3 text-sm focus:outline-none focus:border-primary" />
                 </div>
               </div>
               <button type="submit" className="w-full bg-foreground text-white py-4 font-display text-xl tracking-widest hover:bg-primary transition-colors cursor-pointer">
@@ -190,7 +191,7 @@ function Index() {
                 <li key={b.n} className="flex gap-4">
                   <span className="bg-foreground text-background size-6 rounded-full flex items-center justify-center font-mono text-xs font-bold shrink-0">{b.n}</span>
                   <div>
-                    <h4 className="font-bold text-sm uppercase">{b.t}</h4>
+                    <h3 className="font-bold text-sm uppercase">{b.t}</h3>
                     <p className="text-sm text-foreground/60">{b.d}</p>
                   </div>
                 </li>
@@ -200,6 +201,7 @@ function Index() {
           </div>
         </div>
       </section>
+      </main>
 
       {/* Footer */}
       <footer id="contact" className="bg-background pt-20 pb-10 border-t-4 border-foreground">
@@ -282,12 +284,12 @@ function PartnerForm() {
       className="bg-foreground text-white p-6 border-2 border-foreground"
     >
       <div className="grid grid-cols-2 gap-3 mb-3">
-        <input required placeholder="Owner Name" className="bg-white/5 border border-white/15 px-3 py-3 text-sm placeholder:text-white/40 focus:outline-none focus:border-primary" />
-        <input required type="tel" placeholder="Mobile Number" className="bg-white/5 border border-white/15 px-3 py-3 text-sm placeholder:text-white/40 focus:outline-none focus:border-primary" />
+        <input required aria-label="Owner Name" placeholder="Owner Name" className="bg-white/5 border border-white/15 px-3 py-3 text-sm placeholder:text-white/60 focus:outline-none focus:border-primary" />
+        <input required type="tel" aria-label="Mobile Number" placeholder="Mobile Number" className="bg-white/5 border border-white/15 px-3 py-3 text-sm placeholder:text-white/60 focus:outline-none focus:border-primary" />
       </div>
       <div className="grid grid-cols-2 gap-3 mb-4">
-        <input required placeholder="City" className="bg-white/5 border border-white/15 px-3 py-3 text-sm placeholder:text-white/40 focus:outline-none focus:border-primary" />
-        <input required type="number" min={1} max={500} placeholder="No. of Trucks" className="bg-white/5 border border-white/15 px-3 py-3 text-sm placeholder:text-white/40 focus:outline-none focus:border-primary" />
+        <input required aria-label="City" placeholder="City" className="bg-white/5 border border-white/15 px-3 py-3 text-sm placeholder:text-white/60 focus:outline-none focus:border-primary" />
+        <input required type="number" min={1} max={500} aria-label="Number of Trucks" placeholder="No. of Trucks" className="bg-white/5 border border-white/15 px-3 py-3 text-sm placeholder:text-white/60 focus:outline-none focus:border-primary" />
       </div>
       <button type="submit" className="w-full bg-primary text-white py-5 font-display text-2xl tracking-widest hover:bg-white hover:text-foreground transition-all flex items-center justify-center gap-4 group">
         REGISTER YOUR TRUCK <span className="group-hover:translate-x-2 transition-transform">→</span>
