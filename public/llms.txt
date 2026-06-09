@@ -1,0 +1,9 @@
+# Vivek Transportt
+
+> India's logistics marketplace for booking verified trucks for parcels across Maharashtra, and for truck owners to earn on a transparent commission.
+
+Vivek Transportt connects shippers with background-checked truck owners. Customers get instant quotes, GPS tracking, and on-time delivery. Truck owners get guaranteed backhauls, 48-hour payments, and a fixed 4% commission.
+
+## Pages
+
+- [Home](/): Book a truck, view fleet types, register as a truck owner, and contact info.
