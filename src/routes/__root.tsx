@@ -87,6 +87,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:description", content: "India's logistics marketplace. Book verified trucks for parcels across 450+ cities, or list your truck and earn on a transparent commission." },
       { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/Tb0lDhWCUOMbrNQzMZyYovmEzD13/social-images/social-1780933880922-216724487.webp" },
       { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/Tb0lDhWCUOMbrNQzMZyYovmEzD13/social-images/social-1780933880922-216724487.webp" },
+      { name: "google-site-verification", content: "4neu5dD40kgSAg2rb_uo4IHTl7p0eLM1kQzj4zg-N7U" },
     ],
     links: [
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
