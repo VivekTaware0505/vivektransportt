@@ -24,52 +24,54 @@ function Index() {
     <div className="min-h-screen font-sans text-foreground bg-background selection:bg-primary/20">
       {/* Navigation */}
       <nav className="sticky top-0 z-50 bg-background/95 backdrop-blur-md border-b border-border">
-        <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
-          <Logo className="text-2xl" />
+        <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between gap-3">
+          <Logo className="text-lg sm:text-2xl shrink-0" />
           <div className="hidden md:flex gap-8 text-xs font-semibold uppercase tracking-widest">
             <a href="#fleet" className="hover:text-primary transition-colors">Truck</a>
             <a href="#partner" className="hover:text-primary transition-colors">Partner</a>
             <a href="#how" className="hover:text-primary transition-colors">How it Works</a>
             <a href="#contact" className="hover:text-primary transition-colors">Contact</a>
           </div>
-          <div className="flex gap-4">
+          <div className="flex gap-3 sm:gap-4 shrink-0">
             <button className="hidden sm:inline-block text-xs font-bold uppercase border-b-2 border-foreground pb-0.5">Login</button>
-            <a href="#partner" className="bg-primary text-white px-5 py-2 text-xs font-bold uppercase tracking-tighter hover:bg-foreground transition-all">Register Truck</a>
+            <a href="#partner" className="bg-primary text-white px-3 sm:px-5 py-2 text-[10px] sm:text-xs font-bold uppercase tracking-tighter hover:bg-foreground transition-all whitespace-nowrap">Register Truck</a>
           </div>
         </div>
       </nav>
+
+
 
       <main>
       {/* Hero */}
       <section className="relative py-12 md:py-20 overflow-hidden border-b border-border">
         <div className="max-w-7xl mx-auto px-4 grid lg:grid-cols-12 gap-12 items-start">
           <div className="lg:col-span-7 animate-entry">
-            <h1 className="text-6xl md:text-8xl font-display leading-[0.9] mb-6 text-balance">
+            <h1 className="text-4xl sm:text-6xl md:text-8xl font-display leading-[0.95] mb-6 text-balance">
               MOVING INDIA <br />
               <span className="text-primary">ONE LOAD</span> AT A TIME
             </h1>
-            <p className="max-w-[45ch] text-lg text-foreground/70 mb-8">
+            <p className="max-w-[45ch] text-base sm:text-lg text-foreground/70 mb-8">
               Book a verified truck for your parcel in minutes. Real-time GPS tracking, transparent pricing, and pan-India coverage across 450+ cities.
             </p>
-            <div className="flex gap-6 border-t border-border pt-8">
+            <div className="flex flex-wrap gap-4 sm:gap-6 border-t border-border pt-6 sm:pt-8">
               <div>
-                <div className="font-mono text-2xl font-bold">99.4%</div>
+                <div className="font-mono text-xl sm:text-2xl font-bold">99.4%</div>
                 <div className="text-[10px] uppercase tracking-widest opacity-60">On-time Delivery</div>
               </div>
-              <div className="border-l border-border pl-6">
-                <div className="font-mono text-2xl font-bold">24/7</div>
+              <div className="border-l border-border pl-4 sm:pl-6">
+                <div className="font-mono text-xl sm:text-2xl font-bold">24/7</div>
                 <div className="text-[10px] uppercase tracking-widest opacity-60">Live Support</div>
               </div>
-              <div className="border-l border-border pl-6">
-                <div className="font-mono text-2xl font-bold">4%</div>
+              <div className="border-l border-border pl-4 sm:pl-6">
+                <div className="font-mono text-xl sm:text-2xl font-bold">4%</div>
                 <div className="text-[10px] uppercase tracking-widest opacity-60">Owner Commission</div>
               </div>
             </div>
           </div>
 
           {/* Booking Widget */}
-          <div className="lg:col-span-5 bg-card border-2 border-foreground p-6 shadow-[8px_8px_0px_0px_rgba(0,0,0,0.1)] animate-entry [animation-delay:150ms]">
-            <h2 className="font-display text-3xl mb-6 tracking-tight italic">QUICK QUOTE</h2>
+          <div className="lg:col-span-5 bg-card border-2 border-foreground p-4 sm:p-6 shadow-[8px_8px_0px_0px_rgba(0,0,0,0.1)] animate-entry [animation-delay:150ms]">
+            <h2 className="font-display text-2xl sm:text-3xl mb-6 tracking-tight italic">QUICK QUOTE</h2>
             <form className="space-y-4" onSubmit={(e) => { e.preventDefault(); alert("Thanks! Our team will call you with the best quote shortly."); }}>
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-1">
@@ -116,7 +118,7 @@ function Index() {
       <section id="how" className="py-20 border-b border-border">
         <div className="max-w-7xl mx-auto px-4">
           <span className="text-primary font-bold uppercase tracking-widest text-xs">For Customers</span>
-          <h2 className="text-5xl font-display mt-4 mb-12">HOW IT WORKS</h2>
+          <h2 className="text-4xl sm:text-5xl font-display mt-4 mb-12">HOW IT WORKS</h2>
           <div className="grid md:grid-cols-4 gap-8">
             {[
               { n: "01", t: "Enter Details", d: "Tell us pickup, drop, parcel type, and truck size." },
@@ -137,9 +139,9 @@ function Index() {
       {/* Fleet Showcase */}
       <section id="fleet" className="py-20 bg-foreground text-background">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="flex justify-between items-end mb-12">
+          <div className="flex flex-wrap justify-between items-end gap-4 mb-12">
             <div>
-              <h3 className="font-display text-5xl">THE TRUCK</h3>
+              <h3 className="font-display text-4xl sm:text-5xl">THE TRUCK</h3>
               <p className="text-background/50 font-mono text-xs uppercase">Available for immediate dispatch</p>
             </div>
             <a href="#contact" className="hidden md:block text-primary font-bold tracking-tighter">→ VIEW ALL VEHICLES</a>
@@ -169,18 +171,18 @@ function Index() {
       </section>
 
       {/* Partner Section */}
-      <section id="partner" className="py-24 bg-accent/10 border-y border-border">
-        <div className="max-w-7xl mx-auto px-4 grid lg:grid-cols-2 gap-16 items-center">
+      <section id="partner" className="py-20 sm:py-24 bg-accent/10 border-y border-border overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <div className="relative">
             <img src={partnerDriver} alt="Vivek Transportt fleet partner" width={1024} height={1024} loading="lazy" className="w-full aspect-square object-cover border border-border shadow-2xl" />
-            <div className="absolute -bottom-6 -right-6 bg-primary text-white p-8 max-w-xs">
-              <p className="font-display text-2xl leading-tight">"I increased my monthly revenue by 40% since joining Vivek Transportt."</p>
-              <div className="mt-4 font-mono text-xs">— RAJESH K., TRUCK OWNER</div>
+            <div className="absolute -bottom-4 -right-2 sm:-bottom-6 sm:-right-6 bg-primary text-white p-5 sm:p-8 max-w-[14rem] sm:max-w-xs">
+              <p className="font-display text-lg sm:text-2xl leading-tight">"I increased my monthly revenue by 40% since joining Vivek Transportt."</p>
+              <div className="mt-3 sm:mt-4 font-mono text-xs">— RAJESH K., TRUCK OWNER</div>
             </div>
           </div>
           <div>
             <span className="text-primary font-bold uppercase tracking-widest text-xs">Truck Owner Program</span>
-            <h2 className="text-6xl font-display mt-4 mb-6 leading-none italic">EARN WITH <br />YOUR TRUCK</h2>
+            <h2 className="text-4xl sm:text-6xl font-display mt-4 mb-6 leading-none italic">EARN WITH <br />YOUR TRUCK</h2>
             <p className="text-foreground/70 mb-8 max-w-md">Add your truck to Vivek Transportt and start receiving bookings within 48 hours. We run on a transparent commission model — you keep the rest.</p>
             <ul className="space-y-6 mb-10">
               {[
@@ -241,17 +243,17 @@ function Index() {
             </div>
             <div className="md:col-span-3">
               <h5 className="font-bold text-xs uppercase tracking-widest mb-6">Founder</h5>
-              <div className="flex items-start gap-5">
+              <div className="flex flex-col sm:flex-row items-start gap-5">
                 <img
                   src={founderAsset.url}
                   alt="Vivek Taware, Founder"
                   width={120}
                   height={120}
                   loading="lazy"
-                  className="w-28 h-28 object-cover border-2 border-primary shrink-0"
+                  className="w-24 h-24 sm:w-28 sm:h-28 object-cover border-2 border-primary shrink-0"
                 />
-                <div className="pt-1">
-                  <div className="font-display text-3xl tracking-wide leading-tight">VIVEK TAWARE</div>
+                <div className="pt-1 min-w-0">
+                  <div className="font-display text-2xl sm:text-3xl tracking-wide leading-tight">VIVEK TAWARE</div>
                   <div className="text-primary font-bold uppercase tracking-widest text-xs mt-2">Founder</div>
                   <div className="text-sm text-foreground/60 mt-3 leading-relaxed">
                     Entrepreneur with a vision to modernize logistics across Maharashtra.
