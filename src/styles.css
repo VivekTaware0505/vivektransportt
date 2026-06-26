@@ -23,19 +23,19 @@
 }
 
 :root {
-  --background: hsl(0 0% 98%);
-  --foreground: hsl(240 10% 10%);
+  --background: hsl(40 30% 97%);
+  --foreground: hsl(220 40% 11%);
   --card: hsl(0 0% 100%);
-  --card-foreground: hsl(240 10% 10%);
-  --primary: hsl(0 72% 51%);
+  --card-foreground: hsl(220 40% 11%);
+  --primary: hsl(14 88% 47%);
   --primary-foreground: hsl(0 0% 100%);
-  --accent: hsl(45 93% 47%);
-  --accent-foreground: hsl(240 10% 10%);
-  --muted: hsl(240 5% 96%);
-  --muted-foreground: hsl(240 5% 45%);
-  --border: hsl(240 10% 10% / 0.15);
-  --input: hsl(240 10% 10% / 0.15);
-  --ring: hsl(0 72% 51%);
+  --accent: hsl(42 95% 52%);
+  --accent-foreground: hsl(220 40% 11%);
+  --muted: hsl(40 15% 94%);
+  --muted-foreground: hsl(220 15% 40%);
+  --border: hsl(220 40% 11% / 0.14);
+  --input: hsl(220 40% 11% / 0.14);
+  --ring: hsl(14 88% 47%);
   --radius: 0.125rem;
 }
 
@@ -44,8 +44,18 @@
   to { opacity: 1; transform: translateY(0); }
 }
 
+@keyframes road-dash {
+  from { background-position: 0 0; }
+  to { background-position: 40px 0; }
+}
+
 .animate-entry {
   animation: entrance 0.8s var(--ease-industrial) both;
+}
+
+.road-stripe {
+  background-image: repeating-linear-gradient(90deg, var(--accent) 0 20px, transparent 20px 40px);
+  animation: road-dash 1.2s linear infinite;
 }
 
 @layer base {
