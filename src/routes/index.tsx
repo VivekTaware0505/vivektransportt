@@ -88,51 +88,8 @@ function Index() {
           </div>
 
           {/* Booking Widget */}
-          <div id="quote" className="lg:col-span-5 bg-card border-2 border-foreground p-5 sm:p-6 shadow-[8px_8px_0px_0px_hsl(220_40%_11%/0.12)] animate-entry [animation-delay:150ms] scroll-mt-24">
-            <div className="flex items-baseline justify-between mb-5">
-              <h2 className="font-display text-2xl sm:text-3xl tracking-tight italic">QUICK QUOTE</h2>
-              <span className="text-[10px] font-mono uppercase text-primary">Free · 2 min</span>
-            </div>
-            <form className="space-y-4" onSubmit={(e) => { e.preventDefault(); alert("Thanks! Our team will call you with the best quote shortly."); }}>
-              <div className="grid grid-cols-2 gap-3 sm:gap-4">
-                <div className="space-y-1">
-                  <label htmlFor="qq-pickup" className="text-[10px] font-bold uppercase tracking-wider opacity-60">Pickup City</label>
-                  <input id="qq-pickup" required type="text" placeholder="Mumbai" className="w-full border border-border p-3 text-sm focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20" />
-                </div>
-                <div className="space-y-1">
-                  <label htmlFor="qq-drop" className="text-[10px] font-bold uppercase tracking-wider opacity-60">Drop City</label>
-                  <input id="qq-drop" required type="text" placeholder="Pune" className="w-full border border-border p-3 text-sm focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20" />
-                </div>
-              </div>
-              <div className="space-y-1">
-                <label htmlFor="qq-goods" className="text-[10px] font-bold uppercase tracking-wider opacity-60">Parcel / Goods Type</label>
-                <input id="qq-goods" required type="text" placeholder="Furniture, FMCG, Industrial..." className="w-full border border-border p-3 text-sm focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20" />
-              </div>
-              <div className="space-y-1">
-                <label htmlFor="qq-truck" className="text-[10px] font-bold uppercase tracking-wider opacity-60">Truck Type</label>
-                <select id="qq-truck" className="w-full border border-border p-3 text-sm focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 appearance-none bg-card">
-                  <option>Tata Ace Mini (850 kg)</option>
-                  <option>14ft Eicher (4 Ton)</option>
-                  <option>20ft Container (7 Ton)</option>
-                  <option>32ft Multi-Axle (15 Ton)</option>
-                </select>
-              </div>
-              <div className="grid grid-cols-2 gap-3 sm:gap-4">
-                <div className="space-y-1">
-                  <label htmlFor="qq-date" className="text-[10px] font-bold uppercase tracking-wider opacity-60">Date of Loading</label>
-                  <input id="qq-date" required type="date" className="w-full border border-border p-3 text-sm focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20" />
-                </div>
-                <div className="space-y-1">
-                  <label htmlFor="qq-mobile" className="text-[10px] font-bold uppercase tracking-wider opacity-60">Mobile</label>
-                  <input id="qq-mobile" required type="tel" placeholder="+91 98xxx xxxxx" className="w-full border border-border p-3 text-sm focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20" />
-                </div>
-              </div>
-              <button type="submit" className="w-full bg-foreground text-white py-4 font-display text-xl tracking-widest hover:bg-primary transition-colors cursor-pointer">
-                GET INSTANT PRICE →
-              </button>
-              <p className="text-[10px] text-center font-mono uppercase tracking-wider text-foreground/50">No spam · We call back within 15 minutes</p>
-            </form>
-          </div>
+          <QuickQuote />
+
         </div>
       </section>
 
