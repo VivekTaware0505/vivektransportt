@@ -76,7 +76,7 @@ function QuickQuote() {
 
   if (submitted) {
     const waMsg = encodeURIComponent(
-      `Hi Vivek Transportt, I want to book a truck.\nQuote: ${submitted.id}\n${pickup} → ${drop} (${submitted.km} km)\nTruck: ${submitted.truckLabel}\nGoods: ${goods}\nDate: ${date}\nMobile: +91${mobile}\nEstimated: ${inr(submitted.total)}`
+      `Hi Vivek Transportt, I want to book a truck.\nQuote: ${submitted.id}\n${pickup} → ${drop} (${submitted.km} km)\nTruck: ${submitted.truckLabel}\nPayload: ${submitted.weight} kg\nGoods: ${goods}\nDate: ${date}\nMobile: +91${mobile}\nEstimated: ${inr(submitted.total)}`
     );
     return (
       <div id="quote" className="lg:col-span-5 bg-card border-2 border-foreground p-5 sm:p-6 shadow-[8px_8px_0px_0px_hsl(220_40%_11%/0.12)] animate-entry scroll-mt-24">
@@ -91,10 +91,12 @@ function QuickQuote() {
           <div className="flex justify-between py-1"><span className="opacity-60">Route</span><span className="font-bold">{pickup} → {drop}</span></div>
           <div className="flex justify-between py-1"><span className="opacity-60">Distance</span><span>{submitted.km} km</span></div>
           <div className="flex justify-between py-1"><span className="opacity-60">Truck</span><span className="text-right">{submitted.truckLabel}</span></div>
+          <div className="flex justify-between py-1"><span className="opacity-60">Payload</span><span>{submitted.weight.toLocaleString("en-IN")} kg @ ₹{PAYLOAD_RATE}/kg</span></div>
           <div className="flex justify-between py-1"><span className="opacity-60">Loading date</span><span>{date}</span></div>
           <div className="border-t border-foreground/20 mt-2 pt-2 flex justify-between text-base font-display tracking-wider"><span>TOTAL</span><span className="text-primary">{inr(submitted.total)}</span></div>
           <div className="text-[10px] opacity-60 mt-1">Inclusive of GST · Pay after delivery</div>
         </div>
+
         <div className="grid grid-cols-2 gap-3">
           <a href={`https://wa.me/919322662939?text=${waMsg}`} target="_blank" rel="noopener noreferrer" className="bg-green-600 text-white py-3 text-center font-bold text-sm uppercase tracking-wider hover:bg-green-700 transition-colors">WhatsApp Confirm</a>
           <a href="tel:9322662939" className="bg-foreground text-white py-3 text-center font-bold text-sm uppercase tracking-wider hover:bg-primary transition-colors">Call Dispatch</a>
