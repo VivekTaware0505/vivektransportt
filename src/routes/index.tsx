@@ -57,17 +57,22 @@ function QuickQuote() {
   const [truck, setTruck] = useState(TRUCKS[1].id);
   const [date, setDate] = useState(today);
   const [mobile, setMobile] = useState("");
-  const [submitted, setSubmitted] = useState<null | { id: string; total: number; km: number; truckLabel: string }>(null);
+  const [weight, setWeight] = useState<string>("");
+  const [submitted, setSubmitted] = useState<null | { id: string; total: number; km: number; truckLabel: string; weight: number }>(null);
 
   const km = useMemo(() => estimateKm(pickup, drop), [pickup, drop]);
   const t = TRUCKS.find((x) => x.id === truck)!;
+  const weightKg = Math.max(0, Number(weight) || 0);
+  const overCapacity = weightKg > t.capacity;
   const fare = km * t.rate;
-  const subtotal = km > 0 ? fare + t.base : 0;
+  const payloadCharge = weightKg * PAYLOAD_RATE;
+  const subtotal = km > 0 ? fare + t.base + payloadCharge : 0;
   const gst = Math.round(subtotal * 0.05);
   const total = subtotal + gst;
 
   const mobileValid = /^[6-9]\d{9}$/.test(mobile);
-  const canSubmit = pickup && drop && pickup !== drop && goods.trim().length > 1 && mobileValid && km > 0;
+  const canSubmit = !!(pickup && drop && pickup !== drop && goods.trim().length > 1 && mobileValid && km > 0 && weightKg > 0 && !overCapacity);
+
 
   if (submitted) {
     const waMsg = encodeURIComponent(
