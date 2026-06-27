@@ -119,7 +119,7 @@ function QuickQuote() {
           e.preventDefault();
           if (!canSubmit) return;
           const id = "VT-" + Date.now().toString(36).toUpperCase().slice(-6);
-          setSubmitted({ id, total, km, truckLabel: t.label });
+          setSubmitted({ id, total, km, truckLabel: t.label, weight: weightKg });
         }}
       >
         <div className="grid grid-cols-2 gap-3 sm:gap-4">
