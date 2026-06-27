@@ -30,11 +30,14 @@ const CITY_KM: Record<string, number> = {
 };
 
 const TRUCKS = [
-  { id: "ace",   label: "Tata Ace Mini · 850 kg",   rate: 18, base: 350 },
-  { id: "14ft",  label: "14ft Eicher · 4 Ton",       rate: 28, base: 600 },
-  { id: "20ft",  label: "20ft Container · 7 Ton",    rate: 35, base: 900 },
-  { id: "32ft",  label: "32ft Multi-Axle · 15 Ton",  rate: 42, base: 1500 },
+  { id: "ace",   label: "Tata Ace Mini · 850 kg",   rate: 18, base: 350,  capacity: 850 },
+  { id: "14ft",  label: "14ft Eicher · 4 Ton",       rate: 28, base: 600,  capacity: 4000 },
+  { id: "20ft",  label: "20ft Container · 7 Ton",    rate: 35, base: 900,  capacity: 7000 },
+  { id: "32ft",  label: "32ft Multi-Axle · 15 Ton",  rate: 42, base: 1500, capacity: 15000 },
 ];
+
+const PAYLOAD_RATE = 5; // ₹ per kg — current market rate
+
 
 function estimateKm(from: string, to: string) {
   if (!from || !to || from === to) return 0;
