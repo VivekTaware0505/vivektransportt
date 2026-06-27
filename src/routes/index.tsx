@@ -19,6 +19,163 @@ const Logo = ({ className = "", invert = false }: { className?: string; invert?:
   </div>
 );
 
+// ---------- Quick Quote (live fare estimator) ----------
+const MH_CITIES = ["Mumbai", "Pune", "Nagpur", "Nashik", "Thane", "Aurangabad", "Kolhapur", "Solapur", "Navi Mumbai", "Amravati", "Sangli", "Jalgaon", "Akola", "Latur", "Ahmednagar"];
+
+// Approximate road distances (km) from Mumbai hub; used to estimate intercity routes
+const CITY_KM: Record<string, number> = {
+  Mumbai: 0, "Navi Mumbai": 25, Thane: 35, Pune: 150, Nashik: 165, Aurangabad: 335,
+  Kolhapur: 380, Solapur: 410, Ahmednagar: 250, Sangli: 400, Jalgaon: 420,
+  Akola: 580, Amravati: 670, Latur: 490, Nagpur: 840,
+};
+
+const TRUCKS = [
+  { id: "ace",   label: "Tata Ace Mini · 850 kg",   rate: 18, base: 350 },
+  { id: "14ft",  label: "14ft Eicher · 4 Ton",       rate: 28, base: 600 },
+  { id: "20ft",  label: "20ft Container · 7 Ton",    rate: 35, base: 900 },
+  { id: "32ft",  label: "32ft Multi-Axle · 15 Ton",  rate: 42, base: 1500 },
+];
+
+function estimateKm(from: string, to: string) {
+  if (!from || !to || from === to) return 0;
+  const a = CITY_KM[from] ?? 0;
+  const b = CITY_KM[to] ?? 0;
+  // crude triangulation via Mumbai hub
+  return Math.max(40, Math.round(Math.abs(a - b) || (a + b) * 0.6));
+}
+
+const inr = (n: number) => "₹" + n.toLocaleString("en-IN");
+
+function QuickQuote() {
+  const today = new Date().toISOString().slice(0, 10);
+  const [pickup, setPickup] = useState("Mumbai");
+  const [drop, setDrop] = useState("Pune");
+  const [goods, setGoods] = useState("");
+  const [truck, setTruck] = useState(TRUCKS[1].id);
+  const [date, setDate] = useState(today);
+  const [mobile, setMobile] = useState("");
+  const [submitted, setSubmitted] = useState<null | { id: string; total: number; km: number; truckLabel: string }>(null);
+
+  const km = useMemo(() => estimateKm(pickup, drop), [pickup, drop]);
+  const t = TRUCKS.find((x) => x.id === truck)!;
+  const fare = km * t.rate;
+  const subtotal = km > 0 ? fare + t.base : 0;
+  const gst = Math.round(subtotal * 0.05);
+  const total = subtotal + gst;
+
+  const mobileValid = /^[6-9]\d{9}$/.test(mobile);
+  const canSubmit = pickup && drop && pickup !== drop && goods.trim().length > 1 && mobileValid && km > 0;
+
+  if (submitted) {
+    const waMsg = encodeURIComponent(
+      `Hi Vivek Transportt, I want to book a truck.\nQuote: ${submitted.id}\n${pickup} → ${drop} (${submitted.km} km)\nTruck: ${submitted.truckLabel}\nGoods: ${goods}\nDate: ${date}\nMobile: +91${mobile}\nEstimated: ${inr(submitted.total)}`
+    );
+    return (
+      <div id="quote" className="lg:col-span-5 bg-card border-2 border-foreground p-5 sm:p-6 shadow-[8px_8px_0px_0px_hsl(220_40%_11%/0.12)] animate-entry scroll-mt-24">
+        <div className="flex items-center justify-between mb-4">
+          <div className="flex items-center gap-2">
+            <span className="size-2 rounded-full bg-green-500 animate-pulse" />
+            <h2 className="font-display text-2xl sm:text-3xl tracking-tight italic">QUOTE CONFIRMED</h2>
+          </div>
+          <span className="text-[10px] font-mono uppercase text-foreground/60">{submitted.id}</span>
+        </div>
+        <div className="border border-dashed border-foreground/30 p-4 mb-4 font-mono text-xs">
+          <div className="flex justify-between py-1"><span className="opacity-60">Route</span><span className="font-bold">{pickup} → {drop}</span></div>
+          <div className="flex justify-between py-1"><span className="opacity-60">Distance</span><span>{submitted.km} km</span></div>
+          <div className="flex justify-between py-1"><span className="opacity-60">Truck</span><span className="text-right">{submitted.truckLabel}</span></div>
+          <div className="flex justify-between py-1"><span className="opacity-60">Loading date</span><span>{date}</span></div>
+          <div className="border-t border-foreground/20 mt-2 pt-2 flex justify-between text-base font-display tracking-wider"><span>TOTAL</span><span className="text-primary">{inr(submitted.total)}</span></div>
+          <div className="text-[10px] opacity-60 mt-1">Inclusive of GST · Pay after delivery</div>
+        </div>
+        <div className="grid grid-cols-2 gap-3">
+          <a href={`https://wa.me/919322662939?text=${waMsg}`} target="_blank" rel="noopener noreferrer" className="bg-green-600 text-white py-3 text-center font-bold text-sm uppercase tracking-wider hover:bg-green-700 transition-colors">WhatsApp Confirm</a>
+          <a href="tel:9322662939" className="bg-foreground text-white py-3 text-center font-bold text-sm uppercase tracking-wider hover:bg-primary transition-colors">Call Dispatch</a>
+        </div>
+        <button onClick={() => setSubmitted(null)} className="w-full mt-3 text-[11px] font-mono uppercase tracking-wider text-foreground/60 hover:text-primary cursor-pointer">← Edit quote</button>
+      </div>
+    );
+  }
+
+  return (
+    <div id="quote" className="lg:col-span-5 bg-card border-2 border-foreground p-5 sm:p-6 shadow-[8px_8px_0px_0px_hsl(220_40%_11%/0.12)] animate-entry [animation-delay:150ms] scroll-mt-24">
+      <div className="flex items-baseline justify-between mb-1">
+        <h2 className="font-display text-2xl sm:text-3xl tracking-tight italic">QUICK QUOTE</h2>
+        <span className="text-[10px] font-mono uppercase text-primary flex items-center gap-1.5"><span className="size-1.5 rounded-full bg-primary animate-pulse"/>Live fare</span>
+      </div>
+      <p className="text-[11px] font-mono uppercase tracking-wider text-foreground/50 mb-4">Estimate updates as you fill</p>
+      <form
+        className="space-y-3.5"
+        onSubmit={(e) => {
+          e.preventDefault();
+          if (!canSubmit) return;
+          const id = "VT-" + Date.now().toString(36).toUpperCase().slice(-6);
+          setSubmitted({ id, total, km, truckLabel: t.label });
+        }}
+      >
+        <div className="grid grid-cols-2 gap-3 sm:gap-4">
+          <div className="space-y-1">
+            <label htmlFor="qq-pickup" className="text-[10px] font-bold uppercase tracking-wider opacity-60">Pickup City</label>
+            <select id="qq-pickup" value={pickup} onChange={(e) => setPickup(e.target.value)} className="w-full border border-border p-3 text-sm focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 appearance-none bg-card">
+              {MH_CITIES.map((c) => <option key={c}>{c}</option>)}
+            </select>
+          </div>
+          <div className="space-y-1">
+            <label htmlFor="qq-drop" className="text-[10px] font-bold uppercase tracking-wider opacity-60">Drop City</label>
+            <select id="qq-drop" value={drop} onChange={(e) => setDrop(e.target.value)} className="w-full border border-border p-3 text-sm focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 appearance-none bg-card">
+              {MH_CITIES.map((c) => <option key={c}>{c}</option>)}
+            </select>
+          </div>
+        </div>
+        {pickup === drop && (
+          <p className="text-[11px] font-mono text-primary">Pickup and drop city must be different.</p>
+        )}
+        <div className="space-y-1">
+          <label htmlFor="qq-goods" className="text-[10px] font-bold uppercase tracking-wider opacity-60">Parcel / Goods Type</label>
+          <input id="qq-goods" required value={goods} onChange={(e) => setGoods(e.target.value)} maxLength={80} type="text" placeholder="e.g. Furniture, FMCG cartons, machinery" className="w-full border border-border p-3 text-sm focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20" />
+        </div>
+        <div className="space-y-1">
+          <label htmlFor="qq-truck" className="text-[10px] font-bold uppercase tracking-wider opacity-60">Truck Type</label>
+          <select id="qq-truck" value={truck} onChange={(e) => setTruck(e.target.value)} className="w-full border border-border p-3 text-sm focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 appearance-none bg-card">
+            {TRUCKS.map((x) => <option key={x.id} value={x.id}>{x.label} · {inr(x.rate)}/km</option>)}
+          </select>
+        </div>
+        <div className="grid grid-cols-2 gap-3 sm:gap-4">
+          <div className="space-y-1">
+            <label htmlFor="qq-date" className="text-[10px] font-bold uppercase tracking-wider opacity-60">Loading Date</label>
+            <input id="qq-date" required min={today} value={date} onChange={(e) => setDate(e.target.value)} type="date" className="w-full border border-border p-3 text-sm focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20" />
+          </div>
+          <div className="space-y-1">
+            <label htmlFor="qq-mobile" className="text-[10px] font-bold uppercase tracking-wider opacity-60">Mobile</label>
+            <div className="flex">
+              <span className="border border-border border-r-0 px-2.5 flex items-center text-sm font-mono bg-muted/50">+91</span>
+              <input id="qq-mobile" required value={mobile} onChange={(e) => setMobile(e.target.value.replace(/\D/g, "").slice(0, 10))} type="tel" inputMode="numeric" placeholder="98xxx xxxxx" className="w-full border border-border p-3 text-sm focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20" />
+            </div>
+            {mobile.length > 0 && !mobileValid && <p className="text-[10px] font-mono text-primary">Enter a valid 10-digit number</p>}
+          </div>
+        </div>
+
+        {/* Live fare card */}
+        <div className="border border-foreground/15 bg-muted/40 p-3.5 font-mono text-xs">
+          <div className="flex justify-between"><span className="opacity-60">Distance (est.)</span><span>{km ? km + " km" : "—"}</span></div>
+          <div className="flex justify-between"><span className="opacity-60">Fare ({inr(t.rate)}/km)</span><span>{km ? inr(fare) : "—"}</span></div>
+          <div className="flex justify-between"><span className="opacity-60">Loading + toll</span><span>{km ? inr(t.base) : "—"}</span></div>
+          <div className="flex justify-between"><span className="opacity-60">GST 5%</span><span>{km ? inr(gst) : "—"}</span></div>
+          <div className="border-t border-foreground/20 mt-2 pt-2 flex justify-between items-center">
+            <span className="font-display tracking-wider text-sm">ESTIMATE</span>
+            <span className="font-display text-2xl text-primary tracking-tight">{km ? inr(total) : "—"}</span>
+          </div>
+        </div>
+
+        <button type="submit" disabled={!canSubmit} className="w-full bg-foreground text-white py-4 font-display text-xl tracking-widest hover:bg-primary transition-colors cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed">
+          BOOK THIS TRUCK →
+        </button>
+        <p className="text-[10px] text-center font-mono uppercase tracking-wider text-foreground/50">Verified driver assigned · Pay after delivery · GPS tracking</p>
+      </form>
+    </div>
+  );
+}
+
+
 function Index() {
   return (
     <div className="min-h-screen font-sans text-foreground bg-background selection:bg-primary/20">
