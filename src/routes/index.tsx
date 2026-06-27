@@ -177,6 +177,7 @@ function QuickQuote() {
           <div className="flex justify-between"><span className="opacity-60">Distance (est.)</span><span>{km ? km + " km" : "—"}</span></div>
           <div className="flex justify-between"><span className="opacity-60">Fare ({inr(t.rate)}/km)</span><span>{km ? inr(fare) : "—"}</span></div>
           <div className="flex justify-between"><span className="opacity-60">Loading + toll</span><span>{km ? inr(t.base) : "—"}</span></div>
+          <div className="flex justify-between"><span className="opacity-60">Payload ({weightKg ? weightKg.toLocaleString("en-IN") + " kg" : "0 kg"} × ₹{PAYLOAD_RATE})</span><span>{km && weightKg ? inr(payloadCharge) : "—"}</span></div>
           <div className="flex justify-between"><span className="opacity-60">GST 5%</span><span>{km ? inr(gst) : "—"}</span></div>
           <div className="border-t border-foreground/20 mt-2 pt-2 flex justify-between items-center">
             <span className="font-display tracking-wider text-sm">ESTIMATE</span>
