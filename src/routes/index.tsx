@@ -30,11 +30,14 @@ const CITY_KM: Record<string, number> = {
 };
 
 const TRUCKS = [
-  { id: "ace",   label: "Tata Ace Mini · 850 kg",   rate: 18, base: 350 },
-  { id: "14ft",  label: "14ft Eicher · 4 Ton",       rate: 28, base: 600 },
-  { id: "20ft",  label: "20ft Container · 7 Ton",    rate: 35, base: 900 },
-  { id: "32ft",  label: "32ft Multi-Axle · 15 Ton",  rate: 42, base: 1500 },
+  { id: "ace",   label: "Tata Ace Mini · 850 kg",   rate: 18, base: 350,  capacity: 850 },
+  { id: "14ft",  label: "14ft Eicher · 4 Ton",       rate: 28, base: 600,  capacity: 4000 },
+  { id: "20ft",  label: "20ft Container · 7 Ton",    rate: 35, base: 900,  capacity: 7000 },
+  { id: "32ft",  label: "32ft Multi-Axle · 15 Ton",  rate: 42, base: 1500, capacity: 15000 },
 ];
+
+const PAYLOAD_RATE = 5; // ₹ per kg — current market rate
+
 
 function estimateKm(from: string, to: string) {
   if (!from || !to || from === to) return 0;
@@ -54,21 +57,26 @@ function QuickQuote() {
   const [truck, setTruck] = useState(TRUCKS[1].id);
   const [date, setDate] = useState(today);
   const [mobile, setMobile] = useState("");
-  const [submitted, setSubmitted] = useState<null | { id: string; total: number; km: number; truckLabel: string }>(null);
+  const [weight, setWeight] = useState<string>("");
+  const [submitted, setSubmitted] = useState<null | { id: string; total: number; km: number; truckLabel: string; weight: number }>(null);
 
   const km = useMemo(() => estimateKm(pickup, drop), [pickup, drop]);
   const t = TRUCKS.find((x) => x.id === truck)!;
+  const weightKg = Math.max(0, Number(weight) || 0);
+  const overCapacity = weightKg > t.capacity;
   const fare = km * t.rate;
-  const subtotal = km > 0 ? fare + t.base : 0;
+  const payloadCharge = weightKg * PAYLOAD_RATE;
+  const subtotal = km > 0 ? fare + t.base + payloadCharge : 0;
   const gst = Math.round(subtotal * 0.05);
   const total = subtotal + gst;
 
   const mobileValid = /^[6-9]\d{9}$/.test(mobile);
-  const canSubmit = pickup && drop && pickup !== drop && goods.trim().length > 1 && mobileValid && km > 0;
+  const canSubmit = !!(pickup && drop && pickup !== drop && goods.trim().length > 1 && mobileValid && km > 0 && weightKg > 0 && !overCapacity);
+
 
   if (submitted) {
     const waMsg = encodeURIComponent(
-      `Hi Vivek Transportt, I want to book a truck.\nQuote: ${submitted.id}\n${pickup} → ${drop} (${submitted.km} km)\nTruck: ${submitted.truckLabel}\nGoods: ${goods}\nDate: ${date}\nMobile: +91${mobile}\nEstimated: ${inr(submitted.total)}`
+      `Hi Vivek Transportt, I want to book a truck.\nQuote: ${submitted.id}\n${pickup} → ${drop} (${submitted.km} km)\nTruck: ${submitted.truckLabel}\nPayload: ${submitted.weight} kg\nGoods: ${goods}\nDate: ${date}\nMobile: +91${mobile}\nEstimated: ${inr(submitted.total)}`
     );
     return (
       <div id="quote" className="lg:col-span-5 bg-card border-2 border-foreground p-5 sm:p-6 shadow-[8px_8px_0px_0px_hsl(220_40%_11%/0.12)] animate-entry scroll-mt-24">
@@ -83,10 +91,12 @@ function QuickQuote() {
           <div className="flex justify-between py-1"><span className="opacity-60">Route</span><span className="font-bold">{pickup} → {drop}</span></div>
           <div className="flex justify-between py-1"><span className="opacity-60">Distance</span><span>{submitted.km} km</span></div>
           <div className="flex justify-between py-1"><span className="opacity-60">Truck</span><span className="text-right">{submitted.truckLabel}</span></div>
+          <div className="flex justify-between py-1"><span className="opacity-60">Payload</span><span>{submitted.weight.toLocaleString("en-IN")} kg @ ₹{PAYLOAD_RATE}/kg</span></div>
           <div className="flex justify-between py-1"><span className="opacity-60">Loading date</span><span>{date}</span></div>
           <div className="border-t border-foreground/20 mt-2 pt-2 flex justify-between text-base font-display tracking-wider"><span>TOTAL</span><span className="text-primary">{inr(submitted.total)}</span></div>
           <div className="text-[10px] opacity-60 mt-1">Inclusive of GST · Pay after delivery</div>
         </div>
+
         <div className="grid grid-cols-2 gap-3">
           <a href={`https://wa.me/919322662939?text=${waMsg}`} target="_blank" rel="noopener noreferrer" className="bg-green-600 text-white py-3 text-center font-bold text-sm uppercase tracking-wider hover:bg-green-700 transition-colors">WhatsApp Confirm</a>
           <a href="tel:9322662939" className="bg-foreground text-white py-3 text-center font-bold text-sm uppercase tracking-wider hover:bg-primary transition-colors">Call Dispatch</a>
@@ -109,7 +119,7 @@ function QuickQuote() {
           e.preventDefault();
           if (!canSubmit) return;
           const id = "VT-" + Date.now().toString(36).toUpperCase().slice(-6);
-          setSubmitted({ id, total, km, truckLabel: t.label });
+          setSubmitted({ id, total, km, truckLabel: t.label, weight: weightKg });
         }}
       >
         <div className="grid grid-cols-2 gap-3 sm:gap-4">
@@ -133,12 +143,20 @@ function QuickQuote() {
           <label htmlFor="qq-goods" className="text-[10px] font-bold uppercase tracking-wider opacity-60">Parcel / Goods Type</label>
           <input id="qq-goods" required value={goods} onChange={(e) => setGoods(e.target.value)} maxLength={80} type="text" placeholder="e.g. Furniture, FMCG cartons, machinery" className="w-full border border-border p-3 text-sm focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20" />
         </div>
-        <div className="space-y-1">
-          <label htmlFor="qq-truck" className="text-[10px] font-bold uppercase tracking-wider opacity-60">Truck Type</label>
-          <select id="qq-truck" value={truck} onChange={(e) => setTruck(e.target.value)} className="w-full border border-border p-3 text-sm focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 appearance-none bg-card">
-            {TRUCKS.map((x) => <option key={x.id} value={x.id}>{x.label} · {inr(x.rate)}/km</option>)}
-          </select>
+        <div className="grid grid-cols-2 gap-3 sm:gap-4">
+          <div className="space-y-1">
+            <label htmlFor="qq-truck" className="text-[10px] font-bold uppercase tracking-wider opacity-60">Truck Type</label>
+            <select id="qq-truck" value={truck} onChange={(e) => setTruck(e.target.value)} className="w-full border border-border p-3 text-sm focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 appearance-none bg-card">
+              {TRUCKS.map((x) => <option key={x.id} value={x.id}>{x.label} · {inr(x.rate)}/km</option>)}
+            </select>
+          </div>
+          <div className="space-y-1">
+            <label htmlFor="qq-weight" className="text-[10px] font-bold uppercase tracking-wider opacity-60">Payload (Kg) · ₹{PAYLOAD_RATE}/kg</label>
+            <input id="qq-weight" required value={weight} onChange={(e) => setWeight(e.target.value.replace(/\D/g, "").slice(0, 6))} type="text" inputMode="numeric" placeholder={`up to ${t.capacity.toLocaleString("en-IN")} kg`} className="w-full border border-border p-3 text-sm focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20" />
+            {overCapacity && <p className="text-[10px] font-mono text-primary">Exceeds {t.capacity.toLocaleString("en-IN")} kg — pick a bigger truck</p>}
+          </div>
         </div>
+
         <div className="grid grid-cols-2 gap-3 sm:gap-4">
           <div className="space-y-1">
             <label htmlFor="qq-date" className="text-[10px] font-bold uppercase tracking-wider opacity-60">Loading Date</label>
@@ -159,6 +177,7 @@ function QuickQuote() {
           <div className="flex justify-between"><span className="opacity-60">Distance (est.)</span><span>{km ? km + " km" : "—"}</span></div>
           <div className="flex justify-between"><span className="opacity-60">Fare ({inr(t.rate)}/km)</span><span>{km ? inr(fare) : "—"}</span></div>
           <div className="flex justify-between"><span className="opacity-60">Loading + toll</span><span>{km ? inr(t.base) : "—"}</span></div>
+          <div className="flex justify-between"><span className="opacity-60">Payload ({weightKg ? weightKg.toLocaleString("en-IN") + " kg" : "0 kg"} × ₹{PAYLOAD_RATE})</span><span>{km && weightKg ? inr(payloadCharge) : "—"}</span></div>
           <div className="flex justify-between"><span className="opacity-60">GST 5%</span><span>{km ? inr(gst) : "—"}</span></div>
           <div className="border-t border-foreground/20 mt-2 pt-2 flex justify-between items-center">
             <span className="font-display tracking-wider text-sm">ESTIMATE</span>
