@@ -143,12 +143,20 @@ function QuickQuote() {
           <label htmlFor="qq-goods" className="text-[10px] font-bold uppercase tracking-wider opacity-60">Parcel / Goods Type</label>
           <input id="qq-goods" required value={goods} onChange={(e) => setGoods(e.target.value)} maxLength={80} type="text" placeholder="e.g. Furniture, FMCG cartons, machinery" className="w-full border border-border p-3 text-sm focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20" />
         </div>
-        <div className="space-y-1">
-          <label htmlFor="qq-truck" className="text-[10px] font-bold uppercase tracking-wider opacity-60">Truck Type</label>
-          <select id="qq-truck" value={truck} onChange={(e) => setTruck(e.target.value)} className="w-full border border-border p-3 text-sm focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 appearance-none bg-card">
-            {TRUCKS.map((x) => <option key={x.id} value={x.id}>{x.label} · {inr(x.rate)}/km</option>)}
-          </select>
+        <div className="grid grid-cols-2 gap-3 sm:gap-4">
+          <div className="space-y-1">
+            <label htmlFor="qq-truck" className="text-[10px] font-bold uppercase tracking-wider opacity-60">Truck Type</label>
+            <select id="qq-truck" value={truck} onChange={(e) => setTruck(e.target.value)} className="w-full border border-border p-3 text-sm focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 appearance-none bg-card">
+              {TRUCKS.map((x) => <option key={x.id} value={x.id}>{x.label} · {inr(x.rate)}/km</option>)}
+            </select>
+          </div>
+          <div className="space-y-1">
+            <label htmlFor="qq-weight" className="text-[10px] font-bold uppercase tracking-wider opacity-60">Payload (Kg) · ₹{PAYLOAD_RATE}/kg</label>
+            <input id="qq-weight" required value={weight} onChange={(e) => setWeight(e.target.value.replace(/\D/g, "").slice(0, 6))} type="text" inputMode="numeric" placeholder={`up to ${t.capacity.toLocaleString("en-IN")} kg`} className="w-full border border-border p-3 text-sm focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20" />
+            {overCapacity && <p className="text-[10px] font-mono text-primary">Exceeds {t.capacity.toLocaleString("en-IN")} kg — pick a bigger truck</p>}
+          </div>
         </div>
+
         <div className="grid grid-cols-2 gap-3 sm:gap-4">
           <div className="space-y-1">
             <label htmlFor="qq-date" className="text-[10px] font-bold uppercase tracking-wider opacity-60">Loading Date</label>
