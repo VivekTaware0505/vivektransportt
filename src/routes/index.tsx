@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useMemo, useState } from "react";
 import truck32 from "@/assets/truck-32ft.jpg";
 import truck14 from "@/assets/truck-14ft.jpg";
 import truckAce from "@/assets/truck-ace.jpg";
