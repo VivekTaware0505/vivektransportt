@@ -491,7 +491,7 @@ function Index() {
                       loading="lazy"
                       className="w-24 h-24 sm:w-28 sm:h-28 object-cover rounded-full ring-2 ring-white/20 shadow-xl"
                     />
-                    <span className="absolute -bottom-1 -right-1 bg-accent text-accent-foreground text-[9px] font-bold uppercase tracking-widest px-2 py-0.5 rounded-full shadow-md">CEO</span>
+                    
                   </div>
                   <div className="min-w-0 pt-1">
                     <div className="font-display text-2xl sm:text-3xl tracking-wide leading-tight">Vivek Taware</div>
