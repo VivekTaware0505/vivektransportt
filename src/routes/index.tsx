@@ -478,21 +478,27 @@ function Index() {
               <a href="mailto:vivektransportt@gmail.com" className="text-sm text-primary font-mono hover:underline">vivektransportt@gmail.com</a>
             </div>
             <div className="md:col-span-3">
-              <h5 className="font-bold text-xs uppercase tracking-widest mb-5 text-accent">Founder</h5>
-              <div className="flex flex-col sm:flex-row items-start gap-4">
-                <img
-                  src={founderAsset.url}
-                  alt="Vivek Taware, Founder"
-                  width={120}
-                  height={120}
-                  loading="lazy"
-                  className="w-24 h-24 sm:w-28 sm:h-28 object-cover border-2 border-primary shrink-0"
-                />
-                <div className="pt-1 min-w-0">
-                  <div className="font-display text-2xl sm:text-3xl tracking-wide leading-tight">VIVEK TAWARE</div>
-                  <div className="text-primary font-bold uppercase tracking-widest text-xs mt-2">Founder</div>
-                  <div className="text-sm text-white/60 mt-2 leading-relaxed">
-                    Entrepreneur with a vision to modernize logistics across Maharashtra.
+              <h5 className="font-bold text-xs uppercase tracking-widest mb-5 text-accent">Leadership</h5>
+              <div className="relative rounded-lg bg-gradient-to-br from-white/[0.08] to-white/[0.02] border border-white/10 p-5 overflow-hidden">
+                <div className="absolute -top-10 -right-10 w-32 h-32 rounded-full bg-accent/15 blur-2xl" aria-hidden />
+                <div className="flex items-start gap-4 relative">
+                  <div className="relative shrink-0">
+                    <img
+                      src={founderAsset.url}
+                      alt="Vivek Taware, Founder"
+                      width={128}
+                      height={128}
+                      loading="lazy"
+                      className="w-24 h-24 sm:w-28 sm:h-28 object-cover rounded-full ring-2 ring-white/20 shadow-xl"
+                    />
+                    <span className="absolute -bottom-1 -right-1 bg-accent text-accent-foreground text-[9px] font-bold uppercase tracking-widest px-2 py-0.5 rounded-full shadow-md">CEO</span>
+                  </div>
+                  <div className="min-w-0 pt-1">
+                    <div className="font-display text-2xl sm:text-3xl tracking-wide leading-tight">Vivek Taware</div>
+                    <div className="text-accent font-semibold text-xs mt-1">Founder &amp; CEO</div>
+                    <div className="text-sm text-white/70 mt-3 leading-relaxed">
+                      Entrepreneur on a mission to modernize road logistics across Maharashtra — connecting shippers with verified truck owners through fair, transparent pricing.
+                    </div>
                   </div>
                 </div>
               </div>
