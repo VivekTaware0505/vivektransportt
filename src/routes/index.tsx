@@ -495,7 +495,7 @@ function Index() {
                   </div>
                   <div className="min-w-0 pt-1">
                     <div className="font-display text-2xl sm:text-3xl tracking-wide leading-tight">Vivek Taware</div>
-                    <div className="text-accent font-semibold text-xs mt-1">Founder &amp; CEO</div>
+                    <div className="text-accent font-semibold text-xs mt-1">Founder</div>
                     <div className="text-sm text-white/70 mt-3 leading-relaxed">
                       Entrepreneur on a mission to modernize road logistics across Maharashtra — connecting shippers with verified truck owners through fair, transparent pricing.
                     </div>
