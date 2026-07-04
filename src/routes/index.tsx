@@ -527,26 +527,97 @@ function Index() {
   );
 }
 
+const COMMISSION_PCT = 4;
+const TRUCK_TYPES = ["Tata Ace (750 kg)", "Pickup (1.5 T)", "Eicher 14ft (3 T)", "Tata 407 (2.5 T)", "Tata LPT 1109 (6 T)", "10-Wheeler (15 T)", "12-Wheeler (20 T)", "Trailer (25 T+)"];
+
 function PartnerForm() {
+  const [sent, setSent] = useState(false);
+  const [form, setForm] = useState({
+    owner: "",
+    mobile: "",
+    city: "",
+    truckType: TRUCK_TYPES[0],
+    regNo: "",
+    capacity: "",
+    routes: "",
+  });
+
+  const set = (k: keyof typeof form) => (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) =>
+    setForm((f) => ({ ...f, [k]: e.target.value }));
+
+  const mobileOk = /^[6-9]\d{9}$/.test(form.mobile);
+  const regOk = form.regNo.trim().length >= 6;
+  const canSubmit = form.owner.trim() && mobileOk && form.city.trim() && regOk && form.capacity;
+
+  const waText = encodeURIComponent(
+    `Hi Vivek Transportt, I want to register my truck.\n` +
+    `Owner: ${form.owner}\nMobile: +91${form.mobile}\nCity: ${form.city}\n` +
+    `Truck: ${form.truckType}\nReg No: ${form.regNo.toUpperCase()}\n` +
+    `Capacity: ${form.capacity} kg\nPreferred Routes: ${form.routes || "Any"}\n` +
+    `I accept the ${COMMISSION_PCT}% platform commission.`
+  );
+
+  if (sent) {
+    return (
+      <div className="bg-foreground text-white p-6 border-2 border-foreground">
+        <div className="font-display text-2xl mb-2">Application received ✓</div>
+        <p className="text-sm text-white/70 mb-4">Our partner team will call you within 24 hours to verify your truck and RC. Send your details on WhatsApp to speed it up.</p>
+        <a
+          href={`https://wa.me/919322662939?text=${waText}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white px-5 py-3 text-sm font-bold uppercase tracking-wider transition-colors"
+        >
+          Send on WhatsApp →
+        </a>
+        <button type="button" onClick={() => setSent(false)} className="ml-3 text-xs text-white/60 underline">Register another truck</button>
+      </div>
+    );
+  }
+
   return (
     <form
       onSubmit={(e) => {
         e.preventDefault();
-        alert("Application received! Our partner team will reach out within 24 hours.");
+        if (!canSubmit) return;
+        window.open(`https://wa.me/919322662939?text=${waText}`, "_blank", "noopener,noreferrer");
+        setSent(true);
       }}
       className="bg-foreground text-white p-5 sm:p-6 border-2 border-foreground"
     >
+      <div className="flex items-center justify-between mb-4 pb-3 border-b border-white/10">
+        <span className="text-[10px] uppercase tracking-widest text-white/60">Platform Commission</span>
+        <span className="font-mono text-sm font-bold text-accent">{COMMISSION_PCT}% flat · You keep {100 - COMMISSION_PCT}%</span>
+      </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-3">
-        <input required aria-label="Owner Name" placeholder="Owner Name" className="bg-white/5 border border-white/15 px-3 py-3 text-sm placeholder:text-white/60 focus:outline-none focus:border-primary" />
-        <input required type="tel" aria-label="Mobile Number" placeholder="Mobile Number" className="bg-white/5 border border-white/15 px-3 py-3 text-sm placeholder:text-white/60 focus:outline-none focus:border-primary" />
+        <input required maxLength={60} value={form.owner} onChange={set("owner")} aria-label="Owner Name" placeholder="Owner Name" className="bg-white/5 border border-white/15 px-3 py-3 text-sm placeholder:text-white/60 focus:outline-none focus:border-primary" />
+        <div>
+          <div className="flex items-center bg-white/5 border border-white/15 focus-within:border-primary">
+            <span className="px-3 text-sm text-white/60 border-r border-white/15">+91</span>
+            <input required inputMode="numeric" pattern="[6-9][0-9]{9}" maxLength={10} value={form.mobile} onChange={(e) => setForm((f) => ({ ...f, mobile: e.target.value.replace(/\D/g, "").slice(0, 10) }))} aria-label="Mobile Number" placeholder="10-digit mobile" className="flex-1 bg-transparent px-3 py-3 text-sm placeholder:text-white/60 focus:outline-none" />
+          </div>
+          {form.mobile && !mobileOk && <p className="text-[10px] text-red-400 mt-1">Enter a valid Indian mobile</p>}
+        </div>
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
-        <input required aria-label="City" placeholder="City" className="bg-white/5 border border-white/15 px-3 py-3 text-sm placeholder:text-white/60 focus:outline-none focus:border-primary" />
-        <input required type="number" min={1} max={500} aria-label="Number of Trucks" placeholder="No. of Trucks" className="bg-white/5 border border-white/15 px-3 py-3 text-sm placeholder:text-white/60 focus:outline-none focus:border-primary" />
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-3">
+        <input required maxLength={40} value={form.city} onChange={set("city")} aria-label="City" placeholder="City (e.g. Pune)" className="bg-white/5 border border-white/15 px-3 py-3 text-sm placeholder:text-white/60 focus:outline-none focus:border-primary" />
+        <select value={form.truckType} onChange={set("truckType")} aria-label="Truck Type" className="bg-white/5 border border-white/15 px-3 py-3 text-sm text-white focus:outline-none focus:border-primary">
+          {TRUCK_TYPES.map((t) => <option key={t} value={t} className="bg-foreground">{t}</option>)}
+        </select>
       </div>
-      <button type="submit" className="w-full bg-primary text-white py-4 sm:py-5 font-display text-xl sm:text-2xl tracking-widest hover:bg-accent hover:text-foreground transition-all flex items-center justify-center gap-4 group">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-3">
+        <div>
+          <input required maxLength={15} value={form.regNo} onChange={(e) => setForm((f) => ({ ...f, regNo: e.target.value.toUpperCase().slice(0, 15) }))} aria-label="Vehicle Registration Number" placeholder="Reg No. (MH12AB1234)" className="w-full bg-white/5 border border-white/15 px-3 py-3 text-sm placeholder:text-white/60 focus:outline-none focus:border-primary" />
+          {form.regNo && !regOk && <p className="text-[10px] text-red-400 mt-1">Enter full registration number</p>}
+        </div>
+        <input required type="number" min={100} max={40000} value={form.capacity} onChange={set("capacity")} aria-label="Capacity in kg" placeholder="Capacity (kg)" className="bg-white/5 border border-white/15 px-3 py-3 text-sm placeholder:text-white/60 focus:outline-none focus:border-primary" />
+      </div>
+      <input maxLength={100} value={form.routes} onChange={set("routes")} aria-label="Preferred Routes" placeholder="Preferred routes (optional, e.g. Pune–Mumbai)" className="w-full bg-white/5 border border-white/15 px-3 py-3 text-sm placeholder:text-white/60 focus:outline-none focus:border-primary mb-4" />
+      <button type="submit" disabled={!canSubmit} className="w-full bg-primary text-white py-4 sm:py-5 font-display text-xl sm:text-2xl tracking-widest hover:bg-accent hover:text-foreground transition-all flex items-center justify-center gap-4 group disabled:opacity-50 disabled:cursor-not-allowed">
         REGISTER YOUR TRUCK <span className="group-hover:translate-x-2 transition-transform">→</span>
       </button>
+      <p className="text-[10px] text-white/50 mt-3 text-center">By registering you agree to our {COMMISSION_PCT}% commission on completed bookings. Keep your RC & license ready for verification.</p>
     </form>
   );
 }
+
