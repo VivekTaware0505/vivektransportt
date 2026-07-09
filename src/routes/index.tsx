@@ -240,12 +240,19 @@ function Index() {
               MOVING MAHARASHTRA <br />
               <span className="text-primary">ONE LOAD</span> AT A TIME
             </h1>
-            <p className="max-w-[48ch] text-base sm:text-lg text-foreground/70 mb-8">
-              Book a verified truck for your parcel in minutes. Real-time GPS tracking, transparent pricing, and door-to-door pickup across Maharashtra.
+            <p className="max-w-[52ch] text-base sm:text-lg text-foreground/70 mb-6">
+              Safe, fast and affordable transportation services for businesses and individuals — book a verified truck for your parcel in minutes with real-time GPS tracking and door-to-door pickup.
             </p>
+            <ul className="grid grid-cols-2 gap-x-4 gap-y-2 mb-8 max-w-md">
+              {["24×7 Support", "GPS Tracking", "Experienced Drivers", "On-Time Delivery"].map((f) => (
+                <li key={f} className="flex items-center gap-2 text-sm font-semibold">
+                  <span className="text-[color:var(--success)] text-lg leading-none">✓</span> {f}
+                </li>
+              ))}
+            </ul>
             <div className="flex flex-wrap gap-3 mb-8">
-              <a href="#quote" className="bg-primary text-white px-6 py-3.5 text-sm font-bold uppercase tracking-wider hover:bg-foreground transition-colors">Book a Truck →</a>
-              <a href="tel:9322662939" className="border-2 border-foreground px-6 py-3.5 text-sm font-bold uppercase tracking-wider hover:bg-foreground hover:text-white transition-colors">Call Now</a>
+              <a href="#quote" className="bg-primary text-white px-6 py-3.5 text-sm font-bold uppercase tracking-wider hover:bg-accent transition-colors">Book a Truck →</a>
+              <a href="tel:9322662939" className="bg-accent text-white px-6 py-3.5 text-sm font-bold uppercase tracking-wider hover:bg-primary transition-colors">📞 Call Now · 9322662939</a>
             </div>
             <div className="grid grid-cols-3 gap-2 sm:gap-6 border-t border-border pt-6">
               <div>
