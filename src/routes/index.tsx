@@ -350,6 +350,44 @@ function Index() {
         </div>
       </section>
 
+      {/* Vehicle Types */}
+      <section id="vehicles" className="py-16 sm:py-20 border-b border-border scroll-mt-20">
+        <div className="max-w-7xl mx-auto px-4">
+          <span className="text-accent font-bold uppercase tracking-widest text-xs">Our Vehicles</span>
+          <h2 className="text-3xl sm:text-5xl font-display mt-3 mb-2">EVERY TRUCK YOU NEED</h2>
+          <p className="text-foreground/60 mb-10 max-w-2xl">From last-mile pickups to full trailer loads — we operate a wide range of verified vehicles across Maharashtra.</p>
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+            {[
+              { n: "Pickup", c: "750 – 1,500 kg", ic: "🛻" },
+              { n: "Tata Ace", c: "750 kg", ic: "🚐" },
+              { n: "Mahindra Bolero Pickup", c: "1.2 T", ic: "🛻" },
+              { n: "Tata 407", c: "2.5 T", ic: "🚚" },
+              { n: "14 Feet Truck", c: "4 T", ic: "🚛" },
+              { n: "17 Feet Truck", c: "5 T", ic: "🚛" },
+              { n: "Container", c: "7 – 15 T", ic: "📦" },
+              { n: "Trailer", c: "25 T+", ic: "🚜" },
+            ].map((v) => (
+              <div key={v.n} className="bg-card border border-border p-5 hover:border-accent hover:shadow-lg transition-all">
+                <div className="text-3xl mb-3">{v.ic}</div>
+                <div className="font-bold text-sm uppercase leading-tight">{v.n}</div>
+                <div className="text-xs font-mono text-foreground/50 mt-1">{v.c}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Tracking */}
+      <section id="track" className="py-16 sm:py-20 bg-primary text-white scroll-mt-20">
+        <div className="max-w-5xl mx-auto px-4">
+          <span className="text-accent font-bold uppercase tracking-widest text-xs">Track Your Shipment</span>
+          <h2 className="text-3xl sm:text-5xl font-display mt-3 mb-3">WHERE IS MY PARCEL?</h2>
+          <p className="text-white/70 mb-8 max-w-xl">Enter your tracking ID (e.g. VT-XXXXXX) and see real-time status of your consignment.</p>
+          <TrackingWidget />
+        </div>
+      </section>
+
+
       {/* Testimonials */}
       <section id="testimonials" className="py-16 sm:py-20 border-b border-border scroll-mt-20">
         <div className="max-w-7xl mx-auto px-4">
