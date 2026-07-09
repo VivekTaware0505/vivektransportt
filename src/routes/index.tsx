@@ -215,10 +215,10 @@ function Index() {
           <Logo className="text-lg sm:text-2xl shrink-0" />
           <div className="hidden lg:flex gap-8 text-xs font-semibold uppercase tracking-widest">
             <a href="#how" className="hover:text-primary transition-colors">How it Works</a>
-            <a href="#fleet" className="hover:text-primary transition-colors">Trucks</a>
-            <a href="#partner" className="hover:text-primary transition-colors">Partner</a>
-            <a href="#testimonials" className="hover:text-primary transition-colors">Reviews</a>
-            <a href="#contact" className="hover:text-primary transition-colors">Contact</a>
+            <a href="#vehicles" className="hover:text-accent transition-colors">Vehicles</a>
+            <a href="#track" className="hover:text-accent transition-colors">Track</a>
+            <a href="#partner" className="hover:text-accent transition-colors">Drivers</a>
+            <a href="#contact" className="hover:text-accent transition-colors">Contact</a>
           </div>
           <div className="flex gap-2 sm:gap-3 shrink-0">
             <a href="#quote" className="hidden sm:inline-flex items-center text-xs font-bold uppercase border-2 border-foreground px-3 py-2 hover:bg-foreground hover:text-white transition-colors">Get Quote</a>
