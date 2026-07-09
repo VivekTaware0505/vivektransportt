@@ -559,7 +559,7 @@ function Index() {
       </main>
 
       {/* Footer */}
-      <footer id="contact" className="bg-foreground text-white pt-16 sm:pt-20 pb-10 scroll-mt-20">
+      <footer className="bg-primary text-white pt-16 sm:pt-20 pb-10 scroll-mt-20">
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid md:grid-cols-12 gap-10 sm:gap-12 mb-16">
             <div className="md:col-span-4">
