@@ -471,6 +471,78 @@ function Index() {
         </div>
       </section>
 
+      {/* Admin Panel Info */}
+      <section id="admin" className="py-16 sm:py-20 bg-muted/50 border-b border-border scroll-mt-20">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="grid lg:grid-cols-12 gap-10 items-start">
+            <div className="lg:col-span-5">
+              <span className="text-accent font-bold uppercase tracking-widest text-xs">Operations Control</span>
+              <h2 className="text-3xl sm:text-5xl font-display mt-3 mb-4">ADMIN PANEL</h2>
+              <p className="text-foreground/70 mb-6">This is where our company runs. A single dashboard gives our operations team complete control over drivers, trucks, bookings, and payments — so every parcel moves smoothly from pickup to delivery.</p>
+              <div className="flex gap-2 items-center text-xs font-mono uppercase text-foreground/60"><span className="size-2 rounded-full bg-[color:var(--success)]" /> Live · Internal team access only</div>
+            </div>
+            <div className="lg:col-span-7 grid grid-cols-2 gap-3">
+              {[
+                { i: "👥", t: "Manage Drivers" },
+                { i: "🚛", t: "Manage Trucks" },
+                { i: "📋", t: "View Bookings" },
+                { i: "🎯", t: "Assign Driver" },
+                { i: "🧾", t: "Generate Invoice" },
+                { i: "🙋", t: "Customer Management" },
+                { i: "📨", t: "Contact Requests" },
+                { i: "💳", t: "Payments" },
+              ].map((a) => (
+                <div key={a.t} className="bg-card border border-border px-4 py-3.5 flex items-center gap-3 hover:border-accent transition-colors">
+                  <span className="text-xl">{a.i}</span>
+                  <span className="text-sm font-semibold">{a.t}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Contact */}
+      <section id="contact" className="py-16 sm:py-20 border-b border-border scroll-mt-20">
+        <div className="max-w-7xl mx-auto px-4">
+          <span className="text-accent font-bold uppercase tracking-widest text-xs">Get In Touch</span>
+          <h2 className="text-3xl sm:text-5xl font-display mt-3 mb-10">CONTACT US</h2>
+          <div className="grid lg:grid-cols-2 gap-8">
+            <div className="aspect-[4/3] lg:aspect-auto lg:min-h-[420px] border border-border overflow-hidden bg-muted">
+              <iframe
+                title="Vivek Transportt office location"
+                src="https://www.google.com/maps?q=Malinagar+Solapur+Maharashtra&output=embed"
+                loading="lazy"
+                className="w-full h-full"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+            </div>
+            <div className="grid sm:grid-cols-2 gap-4 content-start">
+              {[
+                { i: "📍", t: "Office Address", v: "Star Recidency, Malinagar 301, Maharashtra" },
+                { i: "📞", t: "Phone", v: "9322662939", href: "tel:9322662939" },
+                { i: "💬", t: "WhatsApp", v: "Chat with dispatch", href: "https://wa.me/919322662939" },
+                { i: "✉️", t: "Email", v: "vivektransportt@gmail.com", href: "mailto:vivektransportt@gmail.com" },
+                { i: "🕐", t: "Working Hours", v: "Mon – Sun · 24 × 7 Dispatch" },
+                { i: "🚛", t: "Service Area", v: "Maharashtra & Pan-India" },
+              ].map((c) => (
+                <a
+                  key={c.t}
+                  href={c.href ?? "#"}
+                  {...(c.href?.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                  className={`bg-card border border-border p-5 block hover:border-accent hover:shadow-md transition-all ${c.href ? "cursor-pointer" : "pointer-events-none"}`}
+                >
+                  <div className="text-2xl mb-2">{c.i}</div>
+                  <div className="text-[10px] font-bold uppercase tracking-widest text-foreground/50 mb-1">{c.t}</div>
+                  <div className="text-sm font-semibold text-foreground">{c.v}</div>
+                </a>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+
       {/* CTA */}
       <section className="bg-primary text-white py-12 sm:py-16">
         <div className="max-w-7xl mx-auto px-4 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
