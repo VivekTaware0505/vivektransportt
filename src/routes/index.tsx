@@ -236,9 +236,9 @@ function Index() {
             <div className="inline-flex items-center gap-2 bg-accent/15 text-foreground border border-accent/40 px-3 py-1.5 mb-5 text-[10px] sm:text-xs font-bold uppercase tracking-widest">
               <span className="size-1.5 rounded-full bg-primary" /> Trusted by 1,200+ Businesses in Maharashtra
             </div>
-            <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-display leading-[0.95] mb-5 text-balance">
-              MOVING MAHARASHTRA <br />
-              <span className="text-primary">ONE LOAD</span> AT A TIME
+            <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-[5.5rem] font-display leading-[0.95] mb-5 text-balance">
+              RELIABLE TRANSPORT SOLUTIONS <br />
+              ACROSS <span className="text-accent">MAHARASHTRA</span> & INDIA
             </h1>
             <p className="max-w-[52ch] text-base sm:text-lg text-foreground/70 mb-6">
               Safe, fast and affordable transportation services for businesses and individuals — book a verified truck for your parcel in minutes with real-time GPS tracking and door-to-door pickup.
