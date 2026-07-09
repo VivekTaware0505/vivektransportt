@@ -738,3 +738,66 @@ function PartnerForm() {
   );
 }
 
+const TRACK_STAGES = ["Booked", "Driver Assigned", "Loaded", "In Transit", "Delivered"];
+
+function TrackingWidget() {
+  const [id, setId] = useState("");
+  const [result, setResult] = useState<null | { id: string; stage: number }>(null);
+
+  const submit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const trimmed = id.trim().toUpperCase();
+    if (!trimmed) return;
+    // Deterministic mock: derive stage from ID hash so demo feels real
+    const hash = [...trimmed].reduce((a, c) => a + c.charCodeAt(0), 0);
+    const stage = hash % TRACK_STAGES.length;
+    setResult({ id: trimmed, stage });
+  };
+
+  return (
+    <div className="bg-white/5 backdrop-blur border border-white/15 p-5 sm:p-7">
+      <form onSubmit={submit} className="flex flex-col sm:flex-row gap-3 mb-6">
+        <input
+          value={id}
+          onChange={(e) => setId(e.target.value)}
+          placeholder="Enter Tracking ID (e.g. VT-A9B7C2)"
+          aria-label="Tracking ID"
+          className="flex-1 bg-white/10 border border-white/20 px-4 py-3.5 text-sm text-white placeholder:text-white/50 focus:outline-none focus:border-accent"
+        />
+        <button type="submit" className="bg-accent text-white px-6 py-3.5 text-sm font-bold uppercase tracking-wider hover:bg-white hover:text-primary transition-colors">
+          Track →
+        </button>
+      </form>
+
+      {result && (
+        <div className="animate-entry">
+          <div className="flex items-baseline justify-between mb-4">
+            <div className="font-mono text-xs uppercase tracking-widest text-white/60">Shipment</div>
+            <div className="font-mono text-sm font-bold text-accent">{result.id}</div>
+          </div>
+          <ol className="grid grid-cols-1 sm:grid-cols-5 gap-3 sm:gap-2">
+            {TRACK_STAGES.map((s, i) => {
+              const done = i <= result.stage;
+              const active = i === result.stage;
+              return (
+                <li key={s} className="flex sm:flex-col items-center sm:items-start gap-3 sm:gap-2">
+                  <div className={`size-8 rounded-full grid place-items-center text-xs font-bold shrink-0 ${done ? "bg-[color:var(--success)] text-white" : "bg-white/10 text-white/50"} ${active ? "ring-4 ring-accent/40 animate-pulse" : ""}`}>
+                    {done ? "✓" : i + 1}
+                  </div>
+                  <div>
+                    <div className={`text-sm font-semibold ${done ? "text-white" : "text-white/50"}`}>{s}</div>
+                    {active && <div className="text-[10px] font-mono uppercase text-accent">Current</div>}
+                  </div>
+                </li>
+              );
+            })}
+          </ol>
+          <p className="text-[11px] font-mono uppercase tracking-widest text-white/50 mt-6">
+            Need help? Call <a href="tel:9322662939" className="text-accent hover:underline">9322662939</a>
+          </p>
+        </div>
+      )}
+    </div>
+  );
+}
+
