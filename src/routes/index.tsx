@@ -215,10 +215,10 @@ function Index() {
           <Logo className="text-lg sm:text-2xl shrink-0" />
           <div className="hidden lg:flex gap-8 text-xs font-semibold uppercase tracking-widest">
             <a href="#how" className="hover:text-primary transition-colors">How it Works</a>
-            <a href="#fleet" className="hover:text-primary transition-colors">Trucks</a>
-            <a href="#partner" className="hover:text-primary transition-colors">Partner</a>
-            <a href="#testimonials" className="hover:text-primary transition-colors">Reviews</a>
-            <a href="#contact" className="hover:text-primary transition-colors">Contact</a>
+            <a href="#vehicles" className="hover:text-accent transition-colors">Vehicles</a>
+            <a href="#track" className="hover:text-accent transition-colors">Track</a>
+            <a href="#partner" className="hover:text-accent transition-colors">Drivers</a>
+            <a href="#contact" className="hover:text-accent transition-colors">Contact</a>
           </div>
           <div className="flex gap-2 sm:gap-3 shrink-0">
             <a href="#quote" className="hidden sm:inline-flex items-center text-xs font-bold uppercase border-2 border-foreground px-3 py-2 hover:bg-foreground hover:text-white transition-colors">Get Quote</a>
@@ -236,16 +236,23 @@ function Index() {
             <div className="inline-flex items-center gap-2 bg-accent/15 text-foreground border border-accent/40 px-3 py-1.5 mb-5 text-[10px] sm:text-xs font-bold uppercase tracking-widest">
               <span className="size-1.5 rounded-full bg-primary" /> Trusted by 1,200+ Businesses in Maharashtra
             </div>
-            <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-display leading-[0.95] mb-5 text-balance">
-              MOVING MAHARASHTRA <br />
-              <span className="text-primary">ONE LOAD</span> AT A TIME
+            <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-[5.5rem] font-display leading-[0.95] mb-5 text-balance">
+              RELIABLE TRANSPORT SOLUTIONS <br />
+              ACROSS <span className="text-accent">MAHARASHTRA</span> & INDIA
             </h1>
-            <p className="max-w-[48ch] text-base sm:text-lg text-foreground/70 mb-8">
-              Book a verified truck for your parcel in minutes. Real-time GPS tracking, transparent pricing, and door-to-door pickup across Maharashtra.
+            <p className="max-w-[52ch] text-base sm:text-lg text-foreground/70 mb-6">
+              Safe, fast and affordable transportation services for businesses and individuals — book a verified truck for your parcel in minutes with real-time GPS tracking and door-to-door pickup.
             </p>
+            <ul className="grid grid-cols-2 gap-x-4 gap-y-2 mb-8 max-w-md">
+              {["24×7 Support", "GPS Tracking", "Experienced Drivers", "On-Time Delivery"].map((f) => (
+                <li key={f} className="flex items-center gap-2 text-sm font-semibold">
+                  <span className="text-[color:var(--success)] text-lg leading-none">✓</span> {f}
+                </li>
+              ))}
+            </ul>
             <div className="flex flex-wrap gap-3 mb-8">
-              <a href="#quote" className="bg-primary text-white px-6 py-3.5 text-sm font-bold uppercase tracking-wider hover:bg-foreground transition-colors">Book a Truck →</a>
-              <a href="tel:9322662939" className="border-2 border-foreground px-6 py-3.5 text-sm font-bold uppercase tracking-wider hover:bg-foreground hover:text-white transition-colors">Call Now</a>
+              <a href="#quote" className="bg-primary text-white px-6 py-3.5 text-sm font-bold uppercase tracking-wider hover:bg-accent transition-colors">Book a Truck →</a>
+              <a href="tel:9322662939" className="bg-accent text-white px-6 py-3.5 text-sm font-bold uppercase tracking-wider hover:bg-primary transition-colors">📞 Call Now · 9322662939</a>
             </div>
             <div className="grid grid-cols-3 gap-2 sm:gap-6 border-t border-border pt-6">
               <div>
@@ -343,6 +350,44 @@ function Index() {
         </div>
       </section>
 
+      {/* Vehicle Types */}
+      <section id="vehicles" className="py-16 sm:py-20 border-b border-border scroll-mt-20">
+        <div className="max-w-7xl mx-auto px-4">
+          <span className="text-accent font-bold uppercase tracking-widest text-xs">Our Vehicles</span>
+          <h2 className="text-3xl sm:text-5xl font-display mt-3 mb-2">EVERY TRUCK YOU NEED</h2>
+          <p className="text-foreground/60 mb-10 max-w-2xl">From last-mile pickups to full trailer loads — we operate a wide range of verified vehicles across Maharashtra.</p>
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+            {[
+              { n: "Pickup", c: "750 – 1,500 kg", ic: "🛻" },
+              { n: "Tata Ace", c: "750 kg", ic: "🚐" },
+              { n: "Mahindra Bolero Pickup", c: "1.2 T", ic: "🛻" },
+              { n: "Tata 407", c: "2.5 T", ic: "🚚" },
+              { n: "14 Feet Truck", c: "4 T", ic: "🚛" },
+              { n: "17 Feet Truck", c: "5 T", ic: "🚛" },
+              { n: "Container", c: "7 – 15 T", ic: "📦" },
+              { n: "Trailer", c: "25 T+", ic: "🚜" },
+            ].map((v) => (
+              <div key={v.n} className="bg-card border border-border p-5 hover:border-accent hover:shadow-lg transition-all">
+                <div className="text-3xl mb-3">{v.ic}</div>
+                <div className="font-bold text-sm uppercase leading-tight">{v.n}</div>
+                <div className="text-xs font-mono text-foreground/50 mt-1">{v.c}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Tracking */}
+      <section id="track" className="py-16 sm:py-20 bg-primary text-white scroll-mt-20">
+        <div className="max-w-5xl mx-auto px-4">
+          <span className="text-accent font-bold uppercase tracking-widest text-xs">Track Your Shipment</span>
+          <h2 className="text-3xl sm:text-5xl font-display mt-3 mb-3">WHERE IS MY PARCEL?</h2>
+          <p className="text-white/70 mb-8 max-w-xl">Enter your tracking ID (e.g. VT-XXXXXX) and see real-time status of your consignment.</p>
+          <TrackingWidget />
+        </div>
+      </section>
+
+
       {/* Testimonials */}
       <section id="testimonials" className="py-16 sm:py-20 border-b border-border scroll-mt-20">
         <div className="max-w-7xl mx-auto px-4">
@@ -426,6 +471,78 @@ function Index() {
         </div>
       </section>
 
+      {/* Admin Panel Info */}
+      <section id="admin" className="py-16 sm:py-20 bg-muted/50 border-b border-border scroll-mt-20">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="grid lg:grid-cols-12 gap-10 items-start">
+            <div className="lg:col-span-5">
+              <span className="text-accent font-bold uppercase tracking-widest text-xs">Operations Control</span>
+              <h2 className="text-3xl sm:text-5xl font-display mt-3 mb-4">ADMIN PANEL</h2>
+              <p className="text-foreground/70 mb-6">This is where our company runs. A single dashboard gives our operations team complete control over drivers, trucks, bookings, and payments — so every parcel moves smoothly from pickup to delivery.</p>
+              <div className="flex gap-2 items-center text-xs font-mono uppercase text-foreground/60"><span className="size-2 rounded-full bg-[color:var(--success)]" /> Live · Internal team access only</div>
+            </div>
+            <div className="lg:col-span-7 grid grid-cols-2 gap-3">
+              {[
+                { i: "👥", t: "Manage Drivers" },
+                { i: "🚛", t: "Manage Trucks" },
+                { i: "📋", t: "View Bookings" },
+                { i: "🎯", t: "Assign Driver" },
+                { i: "🧾", t: "Generate Invoice" },
+                { i: "🙋", t: "Customer Management" },
+                { i: "📨", t: "Contact Requests" },
+                { i: "💳", t: "Payments" },
+              ].map((a) => (
+                <div key={a.t} className="bg-card border border-border px-4 py-3.5 flex items-center gap-3 hover:border-accent transition-colors">
+                  <span className="text-xl">{a.i}</span>
+                  <span className="text-sm font-semibold">{a.t}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Contact */}
+      <section id="contact" className="py-16 sm:py-20 border-b border-border scroll-mt-20">
+        <div className="max-w-7xl mx-auto px-4">
+          <span className="text-accent font-bold uppercase tracking-widest text-xs">Get In Touch</span>
+          <h2 className="text-3xl sm:text-5xl font-display mt-3 mb-10">CONTACT US</h2>
+          <div className="grid lg:grid-cols-2 gap-8">
+            <div className="aspect-[4/3] lg:aspect-auto lg:min-h-[420px] border border-border overflow-hidden bg-muted">
+              <iframe
+                title="Vivek Transportt office location"
+                src="https://www.google.com/maps?q=Malinagar+Solapur+Maharashtra&output=embed"
+                loading="lazy"
+                className="w-full h-full"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+            </div>
+            <div className="grid sm:grid-cols-2 gap-4 content-start">
+              {[
+                { i: "📍", t: "Office Address", v: "Star Recidency, Malinagar 301, Maharashtra" },
+                { i: "📞", t: "Phone", v: "9322662939", href: "tel:9322662939" },
+                { i: "💬", t: "WhatsApp", v: "Chat with dispatch", href: "https://wa.me/919322662939" },
+                { i: "✉️", t: "Email", v: "vivektransportt@gmail.com", href: "mailto:vivektransportt@gmail.com" },
+                { i: "🕐", t: "Working Hours", v: "Mon – Sun · 24 × 7 Dispatch" },
+                { i: "🚛", t: "Service Area", v: "Maharashtra & Pan-India" },
+              ].map((c) => (
+                <a
+                  key={c.t}
+                  href={c.href ?? "#"}
+                  {...(c.href?.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                  className={`bg-card border border-border p-5 block hover:border-accent hover:shadow-md transition-all ${c.href ? "cursor-pointer" : "pointer-events-none"}`}
+                >
+                  <div className="text-2xl mb-2">{c.i}</div>
+                  <div className="text-[10px] font-bold uppercase tracking-widest text-foreground/50 mb-1">{c.t}</div>
+                  <div className="text-sm font-semibold text-foreground">{c.v}</div>
+                </a>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+
       {/* CTA */}
       <section className="bg-primary text-white py-12 sm:py-16">
         <div className="max-w-7xl mx-auto px-4 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
@@ -442,7 +559,7 @@ function Index() {
       </main>
 
       {/* Footer */}
-      <footer id="contact" className="bg-foreground text-white pt-16 sm:pt-20 pb-10 scroll-mt-20">
+      <footer className="bg-primary text-white pt-16 sm:pt-20 pb-10 scroll-mt-20">
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid md:grid-cols-12 gap-10 sm:gap-12 mb-16">
             <div className="md:col-span-4">
@@ -618,6 +735,69 @@ function PartnerForm() {
       </button>
       <p className="text-[10px] text-white/50 mt-3 text-center">By registering you agree to our {COMMISSION_PCT}% commission on completed bookings. Keep your RC & license ready for verification.</p>
     </form>
+  );
+}
+
+const TRACK_STAGES = ["Booked", "Driver Assigned", "Loaded", "In Transit", "Delivered"];
+
+function TrackingWidget() {
+  const [id, setId] = useState("");
+  const [result, setResult] = useState<null | { id: string; stage: number }>(null);
+
+  const submit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const trimmed = id.trim().toUpperCase();
+    if (!trimmed) return;
+    // Deterministic mock: derive stage from ID hash so demo feels real
+    const hash = [...trimmed].reduce((a, c) => a + c.charCodeAt(0), 0);
+    const stage = hash % TRACK_STAGES.length;
+    setResult({ id: trimmed, stage });
+  };
+
+  return (
+    <div className="bg-white/5 backdrop-blur border border-white/15 p-5 sm:p-7">
+      <form onSubmit={submit} className="flex flex-col sm:flex-row gap-3 mb-6">
+        <input
+          value={id}
+          onChange={(e) => setId(e.target.value)}
+          placeholder="Enter Tracking ID (e.g. VT-A9B7C2)"
+          aria-label="Tracking ID"
+          className="flex-1 bg-white/10 border border-white/20 px-4 py-3.5 text-sm text-white placeholder:text-white/50 focus:outline-none focus:border-accent"
+        />
+        <button type="submit" className="bg-accent text-white px-6 py-3.5 text-sm font-bold uppercase tracking-wider hover:bg-white hover:text-primary transition-colors">
+          Track →
+        </button>
+      </form>
+
+      {result && (
+        <div className="animate-entry">
+          <div className="flex items-baseline justify-between mb-4">
+            <div className="font-mono text-xs uppercase tracking-widest text-white/60">Shipment</div>
+            <div className="font-mono text-sm font-bold text-accent">{result.id}</div>
+          </div>
+          <ol className="grid grid-cols-1 sm:grid-cols-5 gap-3 sm:gap-2">
+            {TRACK_STAGES.map((s, i) => {
+              const done = i <= result.stage;
+              const active = i === result.stage;
+              return (
+                <li key={s} className="flex sm:flex-col items-center sm:items-start gap-3 sm:gap-2">
+                  <div className={`size-8 rounded-full grid place-items-center text-xs font-bold shrink-0 ${done ? "bg-[color:var(--success)] text-white" : "bg-white/10 text-white/50"} ${active ? "ring-4 ring-accent/40 animate-pulse" : ""}`}>
+                    {done ? "✓" : i + 1}
+                  </div>
+                  <div>
+                    <div className={`text-sm font-semibold ${done ? "text-white" : "text-white/50"}`}>{s}</div>
+                    {active && <div className="text-[10px] font-mono uppercase text-accent">Current</div>}
+                  </div>
+                </li>
+              );
+            })}
+          </ol>
+          <p className="text-[11px] font-mono uppercase tracking-widest text-white/50 mt-6">
+            Need help? Call <a href="tel:9322662939" className="text-accent hover:underline">9322662939</a>
+          </p>
+        </div>
+      )}
+    </div>
   );
 }
 
