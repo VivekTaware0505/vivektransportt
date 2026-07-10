@@ -213,7 +213,7 @@ function Index() {
       <nav className="sticky top-0 z-50 bg-background/95 backdrop-blur-md border-b border-border">
         <div className="container-page h-16 flex items-center justify-between gap-3">
           <Logo className="text-lg sm:text-2xl shrink-0" />
-          <div className="hidden lg:flex gap-8 text-xs font-semibold uppercase tracking-widest">
+          <div className="hidden lg:flex gap-6 xl:gap-8 text-xs font-semibold uppercase tracking-widest">
             <a href="#how" className="hover:text-primary transition-colors">How it Works</a>
             <a href="#vehicles" className="hover:text-accent transition-colors">Vehicles</a>
             <a href="#track" className="hover:text-accent transition-colors">Track</a>
@@ -225,7 +225,19 @@ function Index() {
             <a href="#partner" className="bg-primary text-white px-3 sm:px-5 py-2 text-[10px] sm:text-xs font-bold uppercase tracking-tighter hover:bg-foreground transition-all whitespace-nowrap">Register Truck</a>
           </div>
         </div>
+        {/* Mobile section links */}
+        <div className="lg:hidden border-t border-border overflow-x-auto scrollbar-none">
+          <div className="flex gap-5 px-4 py-2 text-[11px] font-bold uppercase tracking-widest whitespace-nowrap">
+            <a href="#quote" className="text-primary">Quote</a>
+            <a href="#how" className="text-foreground/70">How it Works</a>
+            <a href="#vehicles" className="text-foreground/70">Vehicles</a>
+            <a href="#track" className="text-foreground/70">Track</a>
+            <a href="#partner" className="text-foreground/70">Drivers</a>
+            <a href="#contact" className="text-foreground/70">Contact</a>
+          </div>
+        </div>
       </nav>
+
 
       <main>
       {/* Hero */}
