@@ -356,7 +356,7 @@ function Index() {
           <span className="text-accent font-bold uppercase tracking-widest text-xs">Our Vehicles</span>
           <h2 className="text-3xl sm:text-5xl font-display mt-3 mb-2">EVERY TRUCK YOU NEED</h2>
           <p className="text-foreground/60 mb-10 max-w-2xl">From last-mile pickups to full trailer loads — we operate a wide range of verified vehicles across Maharashtra.</p>
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 2xl:grid-cols-8 gap-3 sm:gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-3 sm:gap-4">
             {[
               { n: "Pickup", c: "750 – 1,500 kg", ic: "🛻" },
               { n: "Tata Ace", c: "750 kg", ic: "🚐" },
