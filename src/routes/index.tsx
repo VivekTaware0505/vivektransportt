@@ -558,92 +558,6 @@ function Index() {
       </section>
       </main>
 
-      {/* Founder Spotlight */}
-      <section className="relative bg-primary text-white overflow-hidden scroll-mt-20" id="founder">
-        <div className="absolute inset-0 opacity-[0.07] pointer-events-none" aria-hidden style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, white 1px, transparent 0)', backgroundSize: '28px 28px' }} />
-        <div className="absolute -top-32 -left-24 w-96 h-96 rounded-full bg-accent/25 blur-3xl pointer-events-none" aria-hidden />
-        <div className="absolute -bottom-32 -right-24 w-96 h-96 rounded-full bg-accent/15 blur-3xl pointer-events-none" aria-hidden />
-
-        <div className="relative max-w-7xl mx-auto px-4 py-16 sm:py-24">
-          <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
-            {/* Photo */}
-            <div className="lg:col-span-5">
-              <div className="relative mx-auto max-w-sm lg:max-w-none">
-                <div className="absolute -inset-3 bg-accent/40 blur-2xl rounded-3xl" aria-hidden />
-                <div className="absolute -top-4 -left-4 w-20 h-20 border-t-4 border-l-4 border-accent" aria-hidden />
-                <div className="absolute -bottom-4 -right-4 w-20 h-20 border-b-4 border-r-4 border-accent" aria-hidden />
-                <div className="relative overflow-hidden rounded-2xl shadow-2xl ring-1 ring-white/20">
-                  <img
-                    src={founderAsset.url}
-                    alt="Vivek Taware, Founder of Vivek Transportt"
-                    width={640}
-                    height={720}
-                    loading="lazy"
-                    className="w-full h-auto object-cover aspect-[4/5]"
-                  />
-                  <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-primary via-primary/60 to-transparent h-32" aria-hidden />
-                  <div className="absolute bottom-4 left-4 right-4 flex items-end justify-between">
-                    <div>
-                      <div className="font-mono text-[10px] uppercase tracking-[0.25em] text-accent">Est. 2026</div>
-                      <div className="font-display text-3xl leading-none mt-1">Vivek Taware</div>
-                    </div>
-                    <div className="text-right font-mono text-[10px] uppercase tracking-widest text-white/70">
-                      Maharashtra<br />India
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Content */}
-            <div className="lg:col-span-7">
-              <div className="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.3em] text-accent mb-5">
-                <span className="w-8 h-px bg-accent" /> Meet the Founder
-              </div>
-              <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl leading-[0.95] tracking-wide mb-6">
-                Built by a driver's son.<br />
-                <span className="text-accent">Run for every shipper.</span>
-              </h2>
-              <p className="text-white/75 text-base sm:text-lg leading-relaxed max-w-2xl mb-8">
-                I'm Vivek Taware — an entrepreneur on a mission to modernize road logistics across Maharashtra.
-                Vivek Transportt was born from years of watching shippers overpay and truck owners underearn.
-                We fix that with fair, transparent pricing, verified drivers, and same-week payouts.
-              </p>
-
-              {/* Quote card */}
-              <blockquote className="relative border-l-4 border-accent pl-5 sm:pl-6 mb-8 max-w-2xl">
-                <span className="absolute -top-4 -left-1 font-display text-6xl text-accent/40 leading-none">"</span>
-                <p className="italic text-white/90 text-base sm:text-lg leading-relaxed">
-                  Every load moved is a promise kept — to the shipper, to the driver, and to the road ahead.
-                </p>
-              </blockquote>
-
-              {/* Stats */}
-              <div className="grid grid-cols-3 gap-4 sm:gap-6 max-w-xl mb-8">
-                {[
-                  { k: "12K+", v: "Loads Moved" },
-                  { k: "4%", v: "Flat Commission" },
-                  { k: "48h", v: "Payout Cycle" },
-                ].map((s) => (
-                  <div key={s.v} className="border-t-2 border-accent/60 pt-3">
-                    <div className="font-display text-3xl sm:text-4xl leading-none">{s.k}</div>
-                    <div className="font-mono text-[10px] uppercase tracking-widest text-white/60 mt-1.5">{s.v}</div>
-                  </div>
-                ))}
-              </div>
-
-              <div className="flex flex-wrap gap-3">
-                <a href="tel:9322662939" className="bg-accent text-accent-foreground px-6 py-3 text-sm font-bold uppercase tracking-wider hover:bg-white hover:text-primary transition-colors">
-                  Call the Founder
-                </a>
-                <a href="mailto:vivektransportt@gmail.com" className="border-2 border-white/30 px-6 py-3 text-sm font-bold uppercase tracking-wider hover:bg-white hover:text-primary hover:border-white transition-colors">
-                  Send a Message
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* Footer */}
       <footer className="bg-[hsl(215_68%_9%)] text-white pt-16 sm:pt-20 pb-8 scroll-mt-20 border-t border-white/5">
@@ -667,9 +581,26 @@ function Index() {
               <p className="text-sm text-white/55 max-w-sm mb-6 leading-relaxed">
                 Standardizing Maharashtra's fragmented logistics sector through technology, transparency, and top-tier service.
               </p>
-              <div className="flex items-center gap-2 text-[10px] font-mono uppercase tracking-widest text-white/50">
-                <span className="inline-block w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-                Dispatch live · 24×7
+
+              {/* Founder card — compact, left corner */}
+              <div className="flex items-center gap-4 p-4 rounded-xl bg-white/[0.04] border border-white/10 max-w-sm">
+                <div className="shrink-0">
+                  <img
+                    src={founderAsset.url}
+                    alt="Vivek Taware, Founder"
+                    width={72}
+                    height={72}
+                    loading="lazy"
+                    className="w-16 h-16 sm:w-[72px] sm:h-[72px] object-cover rounded-full ring-2 ring-white/20"
+                  />
+                </div>
+                <div className="min-w-0">
+                  <div className="font-display text-lg sm:text-xl tracking-wide leading-tight">Vivek Taware</div>
+                  <div className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-accent mt-0.5">Founder</div>
+                  <p className="text-[11px] sm:text-xs text-white/60 mt-1.5 leading-relaxed line-clamp-2">
+                    Entrepreneur modernizing road logistics across Maharashtra with fair pricing & verified drivers.
+                  </p>
+                </div>
               </div>
             </div>
 
@@ -722,7 +653,7 @@ function Index() {
             <div className="flex gap-8 text-[10px] font-bold uppercase tracking-widest">
               <a href="#" className="text-white/40 hover:text-accent transition-colors">Privacy</a>
               <a href="#" className="text-white/40 hover:text-accent transition-colors">Carrier Terms</a>
-              <a href="#founder" className="text-white/40 hover:text-accent transition-colors">Founder</a>
+              <a href="#" className="text-white/40 hover:text-accent transition-colors">Admin</a>
             </div>
           </div>
         </div>
