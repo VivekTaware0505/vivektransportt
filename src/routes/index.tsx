@@ -200,7 +200,7 @@ function Index() {
     <div className="min-h-screen font-sans text-foreground bg-background selection:bg-primary/20">
       {/* Top trust strip */}
       <div className="bg-foreground text-white text-[11px] sm:text-xs">
-        <div className="max-w-7xl mx-auto px-4 h-9 flex items-center justify-between gap-4 font-mono uppercase tracking-wider">
+        <div className="container-page h-9 flex items-center justify-between gap-4 font-mono uppercase tracking-wider">
           <span className="hidden sm:inline opacity-80">🚛 Serving Maharashtra · 8 Major Cities</span>
           <span className="sm:hidden opacity-80">🚛 Across Maharashtra</span>
           <a href="tel:9322662939" className="flex items-center gap-2 font-bold hover:text-accent transition-colors">
@@ -211,7 +211,7 @@ function Index() {
 
       {/* Navigation */}
       <nav className="sticky top-0 z-50 bg-background/95 backdrop-blur-md border-b border-border">
-        <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between gap-3">
+        <div className="container-page h-16 flex items-center justify-between gap-3">
           <Logo className="text-lg sm:text-2xl shrink-0" />
           <div className="hidden lg:flex gap-8 text-xs font-semibold uppercase tracking-widest">
             <a href="#how" className="hover:text-primary transition-colors">How it Works</a>
@@ -231,7 +231,7 @@ function Index() {
       {/* Hero */}
       <section className="relative py-10 md:py-20 overflow-hidden border-b border-border">
         <div aria-hidden className="absolute inset-x-0 top-0 h-1 road-stripe opacity-60" />
-        <div className="max-w-7xl mx-auto px-4 grid lg:grid-cols-12 gap-10 lg:gap-12 items-start">
+        <div className="container-page grid lg:grid-cols-12 gap-10 lg:gap-12 items-start">
           <div className="lg:col-span-7 animate-entry">
             <div className="inline-flex items-center gap-2 bg-accent/15 text-foreground border border-accent/40 px-3 py-1.5 mb-5 text-[10px] sm:text-xs font-bold uppercase tracking-widest">
               <span className="size-1.5 rounded-full bg-primary" /> Trusted by 1,200+ Businesses in Maharashtra
@@ -278,7 +278,7 @@ function Index() {
 
       {/* Trust bar */}
       <section className="border-b border-border bg-muted/40 py-6">
-        <div className="max-w-7xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+        <div className="container-page grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
           {[
             { k: "12K+", v: "Loads Delivered" },
             { k: "1,200+", v: "Verified Drivers" },
@@ -295,7 +295,7 @@ function Index() {
 
       {/* How it Works */}
       <section id="how" className="py-16 sm:py-20 border-b border-border scroll-mt-20">
-        <div className="max-w-7xl mx-auto px-4">
+        <div className="container-page">
           <span className="text-primary font-bold uppercase tracking-widest text-xs">For Customers</span>
           <h2 className="text-3xl sm:text-5xl font-display mt-3 mb-10 sm:mb-12">HOW IT WORKS</h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
@@ -317,7 +317,7 @@ function Index() {
 
       {/* Fleet Showcase */}
       <section id="fleet" className="py-16 sm:py-20 bg-foreground text-background scroll-mt-20">
-        <div className="max-w-7xl mx-auto px-4">
+        <div className="container-page">
           <div className="flex flex-wrap justify-between items-end gap-4 mb-10 sm:mb-12">
             <div>
               <span className="text-accent font-bold uppercase tracking-widest text-xs">Our Fleet</span>
@@ -352,7 +352,7 @@ function Index() {
 
       {/* Vehicle Types */}
       <section id="vehicles" className="py-16 sm:py-20 border-b border-border scroll-mt-20">
-        <div className="max-w-7xl mx-auto px-4">
+        <div className="container-page">
           <span className="text-accent font-bold uppercase tracking-widest text-xs">Our Vehicles</span>
           <h2 className="text-3xl sm:text-5xl font-display mt-3 mb-2">EVERY TRUCK YOU NEED</h2>
           <p className="text-foreground/60 mb-10 max-w-2xl">From last-mile pickups to full trailer loads — we operate a wide range of verified vehicles across Maharashtra.</p>
@@ -390,7 +390,7 @@ function Index() {
 
       {/* Testimonials */}
       <section id="testimonials" className="py-16 sm:py-20 border-b border-border scroll-mt-20">
-        <div className="max-w-7xl mx-auto px-4">
+        <div className="container-page">
           <span className="text-primary font-bold uppercase tracking-widest text-xs">What Customers Say</span>
           <h2 className="text-3xl sm:text-5xl font-display mt-3 mb-10">TRUSTED BY BUSINESSES</h2>
           <div className="grid md:grid-cols-3 gap-6">
@@ -414,7 +414,7 @@ function Index() {
 
       {/* Partner Section */}
       <section id="partner" className="py-16 sm:py-24 bg-accent/10 border-y border-border overflow-hidden scroll-mt-20">
-        <div className="max-w-7xl mx-auto px-4 grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div className="container-page grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <div className="relative">
             <img src={partnerDriver} alt="Vivek Transportt fleet partner" width={1024} height={1024} loading="lazy" className="w-full aspect-square object-cover border border-border shadow-2xl" />
             <div className="absolute -bottom-4 -right-2 sm:-bottom-6 sm:-right-6 bg-primary text-white p-5 sm:p-8 max-w-[14rem] sm:max-w-xs shadow-xl">
@@ -473,7 +473,7 @@ function Index() {
 
       {/* Admin Panel Info */}
       <section id="admin" className="py-16 sm:py-20 bg-muted/50 border-b border-border scroll-mt-20">
-        <div className="max-w-7xl mx-auto px-4">
+        <div className="container-page">
           <div className="grid lg:grid-cols-12 gap-10 items-start">
             <div className="lg:col-span-5">
               <span className="text-accent font-bold uppercase tracking-widest text-xs">Operations Control</span>
@@ -504,7 +504,7 @@ function Index() {
 
       {/* Contact */}
       <section id="contact" className="py-16 sm:py-20 border-b border-border scroll-mt-20">
-        <div className="max-w-7xl mx-auto px-4">
+        <div className="container-page">
           <span className="text-accent font-bold uppercase tracking-widest text-xs">Get In Touch</span>
           <h2 className="text-3xl sm:text-5xl font-display mt-3 mb-10">CONTACT US</h2>
           <div className="grid lg:grid-cols-2 gap-8">
@@ -545,7 +545,7 @@ function Index() {
 
       {/* CTA */}
       <section className="bg-primary text-white py-12 sm:py-16">
-        <div className="max-w-7xl mx-auto px-4 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+        <div className="container-page flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
           <div>
             <h2 className="font-display text-3xl sm:text-5xl leading-none">READY TO MOVE YOUR PARCEL?</h2>
             <p className="text-white/80 mt-2">Get an instant quote in 2 minutes. Pay only after delivery.</p>
@@ -561,7 +561,7 @@ function Index() {
 
       {/* Footer */}
       <footer className="bg-[hsl(215_68%_9%)] text-white pt-16 sm:pt-20 pb-8 scroll-mt-20 border-t border-white/5">
-        <div className="max-w-7xl mx-auto px-4">
+        <div className="container-page">
           {/* CTA strip */}
           <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-accent to-[hsl(21_94%_45%)] p-6 sm:p-8 mb-14 flex flex-col sm:flex-row items-center justify-between gap-5">
             <div className="absolute -right-16 -top-16 w-56 h-56 rounded-full bg-white/10 blur-2xl" aria-hidden />
