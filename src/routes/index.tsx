@@ -581,9 +581,26 @@ function Index() {
               <p className="text-sm text-white/55 max-w-sm mb-6 leading-relaxed">
                 Standardizing Maharashtra's fragmented logistics sector through technology, transparency, and top-tier service.
               </p>
-              <div className="flex items-center gap-2 text-[10px] font-mono uppercase tracking-widest text-white/50">
-                <span className="inline-block w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-                Dispatch live · 24×7
+
+              {/* Founder card — compact, left corner */}
+              <div className="flex items-center gap-4 p-4 rounded-xl bg-white/[0.04] border border-white/10 max-w-sm">
+                <div className="shrink-0">
+                  <img
+                    src={founderAsset.url}
+                    alt="Vivek Taware, Founder"
+                    width={72}
+                    height={72}
+                    loading="lazy"
+                    className="w-16 h-16 sm:w-[72px] sm:h-[72px] object-cover rounded-full ring-2 ring-white/20"
+                  />
+                </div>
+                <div className="min-w-0">
+                  <div className="font-display text-lg sm:text-xl tracking-wide leading-tight">Vivek Taware</div>
+                  <div className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-accent mt-0.5">Founder</div>
+                  <p className="text-[11px] sm:text-xs text-white/60 mt-1.5 leading-relaxed line-clamp-2">
+                    Entrepreneur modernizing road logistics across Maharashtra with fair pricing & verified drivers.
+                  </p>
+                </div>
               </div>
             </div>
 
