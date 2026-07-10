@@ -90,3 +90,9 @@
   letter-spacing: -0.01em;
 }
 
+@utility scrollbar-none {
+  scrollbar-width: none;
+  &::-webkit-scrollbar { display: none; }
+}
+
+
