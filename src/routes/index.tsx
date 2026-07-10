@@ -653,7 +653,7 @@ function Index() {
             <div className="flex gap-8 text-[10px] font-bold uppercase tracking-widest">
               <a href="#" className="text-white/40 hover:text-accent transition-colors">Privacy</a>
               <a href="#" className="text-white/40 hover:text-accent transition-colors">Carrier Terms</a>
-              <a href="#founder" className="text-white/40 hover:text-accent transition-colors">Founder</a>
+              <a href="#" className="text-white/40 hover:text-accent transition-colors">Admin</a>
             </div>
           </div>
         </div>
