@@ -298,7 +298,7 @@ function Index() {
         <div className="container-page">
           <span className="text-primary font-bold uppercase tracking-widest text-xs">For Customers</span>
           <h2 className="text-3xl sm:text-5xl font-display mt-3 mb-10 sm:mb-12">HOW IT WORKS</h2>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 xl:gap-10">
             {[
               { n: "01", t: "Enter Details", d: "Tell us pickup, drop, parcel type, and truck size." },
               { n: "02", t: "Get Instant Quote", d: "Transparent commission-based pricing — no hidden charges." },
@@ -327,7 +327,7 @@ function Index() {
             <a href="#quote" className="hidden md:inline-block text-accent font-bold tracking-tighter hover:translate-x-1 transition-transform">→ BOOK NOW</a>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-white/10">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-white/10 xl:gap-1">
             {[
               { img: truck32, title: "32FT MULTI-AXLE", cap: "15,000 KG", desc: "Heavy industrial loads and long-haul parcel distribution.", price: "₹42/km" },
               { img: truck14, title: "14FT OPEN BODY", cap: "4,000 KG", desc: "Intra-city shifts and wholesale market logistics.", price: "₹28/km" },
@@ -356,7 +356,7 @@ function Index() {
           <span className="text-accent font-bold uppercase tracking-widest text-xs">Our Vehicles</span>
           <h2 className="text-3xl sm:text-5xl font-display mt-3 mb-2">EVERY TRUCK YOU NEED</h2>
           <p className="text-foreground/60 mb-10 max-w-2xl">From last-mile pickups to full trailer loads — we operate a wide range of verified vehicles across Maharashtra.</p>
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 2xl:grid-cols-8 gap-3 sm:gap-4">
             {[
               { n: "Pickup", c: "750 – 1,500 kg", ic: "🛻" },
               { n: "Tata Ace", c: "750 kg", ic: "🚐" },
@@ -481,7 +481,7 @@ function Index() {
               <p className="text-foreground/70 mb-6">This is where our company runs. A single dashboard gives our operations team complete control over drivers, trucks, bookings, and payments — so every parcel moves smoothly from pickup to delivery.</p>
               <div className="flex gap-2 items-center text-xs font-mono uppercase text-foreground/60"><span className="size-2 rounded-full bg-[color:var(--success)]" /> Live · Internal team access only</div>
             </div>
-            <div className="lg:col-span-7 grid grid-cols-2 gap-3">
+            <div className="lg:col-span-7 grid grid-cols-2 xl:grid-cols-4 gap-3">
               {[
                 { i: "👥", t: "Manage Drivers" },
                 { i: "🚛", t: "Manage Trucks" },
