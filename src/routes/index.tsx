@@ -950,18 +950,26 @@ function TrackingWidget() {
 
   return (
     <div className="bg-white/5 backdrop-blur border border-white/15 p-5 sm:p-7">
-      <form onSubmit={submit} className="flex flex-col sm:flex-row gap-3 mb-6">
+      <form onSubmit={submit} className="flex flex-col sm:flex-row gap-3 mb-3">
         <input
           value={id}
           onChange={(e) => setId(e.target.value)}
           placeholder="Enter Tracking ID (e.g. VT-A9B7C2)"
           aria-label="Tracking ID"
-          className="flex-1 bg-white/10 border border-white/20 px-4 py-3.5 text-sm text-white placeholder:text-white/50 focus:outline-none focus:border-accent"
+          className="flex-1 bg-white/10 border border-white/20 px-4 py-4 text-base text-white placeholder:text-white/50 focus:outline-none focus:border-accent"
         />
-        <button type="submit" className="bg-accent text-white px-6 py-3.5 text-sm font-bold uppercase tracking-wider hover:bg-white hover:text-primary transition-colors">
+        <button type="submit" className="bg-accent text-white px-6 py-4 text-sm font-bold uppercase tracking-wider hover:bg-white hover:text-primary transition-colors">
           Track →
         </button>
       </form>
+      <button
+        type="button"
+        onClick={() => { setId("VT-DEMO23"); const hash = [..."VT-DEMO23"].reduce((a, c) => a + c.charCodeAt(0), 0); setResult({ id: "VT-DEMO23", stage: hash % TRACK_STAGES.length }); }}
+        className="text-[11px] font-mono uppercase tracking-widest text-accent hover:text-white mb-6 cursor-pointer"
+      >
+        → Try sample: VT-DEMO23
+      </button>
+
 
       {result && (
         <div className="animate-entry">
