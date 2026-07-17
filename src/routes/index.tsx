@@ -489,13 +489,19 @@ function Index() {
           </div>
           <div>
             <span className="text-primary font-bold uppercase tracking-widest text-xs">Truck Owner Program</span>
-            <h2 className="text-3xl sm:text-6xl font-display mt-3 mb-6 leading-none italic">EARN WITH <br />YOUR TRUCK</h2>
-            <p className="text-foreground/70 mb-8 max-w-md">Add your truck to Vivek Transportt and start receiving bookings within 48 hours. We run on a transparent commission model — you keep the rest.</p>
+            <h2 className="font-display mt-3 mb-4 leading-[0.9]">
+              <span className="block text-5xl sm:text-7xl text-accent tracking-tight">EARN 96%</span>
+              <span className="block text-2xl sm:text-4xl italic text-foreground/80 mt-1">OF EVERY FARE</span>
+            </h2>
+            <div className="inline-flex items-center gap-2 bg-foreground text-white px-3 py-1.5 mb-5 text-[11px] font-mono uppercase tracking-widest">
+              <span className="text-accent">Only 4% commission</span> · No monthly fee · No hidden cuts
+            </div>
+            <p className="text-foreground/70 mb-8 max-w-md">Add your truck to Vivek Transportt and start receiving bookings within 48 hours. India's most transparent commission — you keep 96 rupees of every 100.</p>
             <ul className="space-y-5 mb-8">
               {[
                 { n: "01", t: "Guaranteed Backhauls", d: "Never drive an empty truck. We optimize your return journeys." },
-                { n: "02", t: "Timely Payments", d: "Get paid within 48 hours of delivery completion. No hassles." },
-                { n: "03", t: "Transparent Commission", d: "Fixed 4% commission on successful bookings. That's it." },
+                { n: "02", t: "48-Hour Payments", d: "Get paid within 48 hours of delivery completion. Direct to bank." },
+                { n: "03", t: "You Keep 96%", d: "Flat 4% platform fee on completed bookings. No surprises, no upsells." },
               ].map((b) => (
                 <li key={b.n} className="flex gap-4">
                   <span className="bg-foreground text-background size-7 rounded-full flex items-center justify-center font-mono text-xs font-bold shrink-0">{b.n}</span>
@@ -508,6 +514,7 @@ function Index() {
             </ul>
             <PartnerForm />
           </div>
+
         </div>
       </section>
 
