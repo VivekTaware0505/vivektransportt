@@ -54,6 +54,11 @@
 .animate-entry {
   animation: entrance 0.8s var(--ease-industrial) both;
 }
+@keyframes ticker {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
 
 .road-stripe {
   background-image: repeating-linear-gradient(90deg, var(--accent) 0 20px, transparent 20px 40px);
