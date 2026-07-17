@@ -448,20 +448,32 @@ function Index() {
           <h2 className="text-3xl sm:text-5xl font-display mt-3 mb-10">TRUSTED BY BUSINESSES</h2>
           <div className="grid md:grid-cols-3 gap-6">
             {[
-              { n: "Priya Deshmukh", role: "Furniture Retailer · Pune", q: "Vivek Transportt has been our go-to logistics partner for 2 years. On-time, every time." },
-              { n: "Anil Patil", role: "FMCG Distributor · Nashik", q: "Transparent pricing and excellent driver coordination. Saved us 20% on monthly logistics." },
-              { n: "Sneha Kulkarni", role: "E-commerce · Mumbai", q: "Booking is so simple. The team picks up within hours and tracking is fully live." },
+              { n: "Priya Deshmukh", role: "Furniture Retailer", city: "Pune", biz: "Deshmukh Furnitures", q: "Vivek Transportt has been our go-to logistics partner for 2 years. On-time, every time.", color: "F97316" },
+              { n: "Anil Patil", role: "FMCG Distributor", city: "Nashik", biz: "Patil Traders", q: "Transparent pricing and excellent driver coordination. Saved us 20% on monthly logistics.", color: "0B1F3A" },
+              { n: "Sneha Kulkarni", role: "E-commerce Owner", city: "Mumbai", biz: "Wraplynn.in", q: "Booking is so simple. The team picks up within hours and tracking is fully live.", color: "22C55E" },
             ].map((t) => (
-              <figure key={t.n} className="bg-card border border-border p-6 hover:border-primary transition-colors">
+              <figure key={t.n} className="bg-card border border-border p-6 hover:border-primary hover:shadow-lg transition-all">
                 <div className="text-accent text-xl mb-3">★★★★★</div>
-                <blockquote className="text-foreground/80 mb-5 leading-relaxed">"{t.q}"</blockquote>
-                <figcaption>
-                  <div className="font-bold text-sm">{t.n}</div>
-                  <div className="text-xs font-mono uppercase text-foreground/50">{t.role}</div>
+                <blockquote className="text-foreground/85 mb-5 leading-relaxed text-[15px]">"{t.q}"</blockquote>
+                <figcaption className="flex items-center gap-3 pt-4 border-t border-border">
+                  <img
+                    src={`https://ui-avatars.com/api/?name=${encodeURIComponent(t.n)}&background=${t.color}&color=fff&size=96&bold=true`}
+                    alt={t.n}
+                    width={48}
+                    height={48}
+                    loading="lazy"
+                    className="size-12 rounded-full shrink-0"
+                  />
+                  <div className="min-w-0">
+                    <div className="font-bold text-sm truncate">{t.n}</div>
+                    <div className="text-[11px] font-mono uppercase text-foreground/60 truncate">{t.role} · {t.city}</div>
+                    <div className="text-[11px] text-primary font-semibold truncate">{t.biz}</div>
+                  </div>
                 </figcaption>
               </figure>
             ))}
           </div>
+
         </div>
       </section>
 
