@@ -543,6 +543,86 @@ function Index() {
         </div>
       </section>
 
+      {/* Why Choose Us — comparison table */}
+      <section className="py-16 sm:py-20 border-b border-border bg-muted/30">
+        <div className="container-page">
+          <span className="text-primary font-bold uppercase tracking-widest text-xs">The Difference</span>
+          <h2 className="text-3xl sm:text-5xl font-display mt-3 mb-3">WHY CHOOSE VIVEK TRANSPORTT</h2>
+          <p className="text-foreground/60 mb-8 max-w-2xl">See how we compare with traditional, unorganized transport agents across Maharashtra.</p>
+          <div className="overflow-x-auto border-2 border-foreground bg-card">
+            <table className="w-full text-sm">
+              <thead>
+                <tr className="bg-foreground text-white">
+                  <th className="text-left p-4 font-display tracking-widest text-base">FEATURE</th>
+                  <th className="text-left p-4 font-display tracking-widest text-base bg-primary">VIVEK TRANSPORTT</th>
+                  <th className="text-left p-4 font-display tracking-widest text-base text-white/60">TRADITIONAL AGENTS</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-border">
+                {[
+                  ["Pricing", "Transparent · fixed formula", "Negotiated · varies daily"],
+                  ["Driver Verification", "Background checks + RC verified", "Rarely verified"],
+                  ["GPS Tracking", "Live · shared on WhatsApp", "Phone calls only"],
+                  ["Payment Terms", "Pay after delivery", "Advance demanded"],
+                  ["Commission to Owner", "Flat 4% (you keep 96%)", "10–20% + hidden cuts"],
+                  ["Booking Time", "60 seconds online", "Hours of phone tag"],
+                  ["Support", "24×7 dispatch team", "Office hours only"],
+                ].map(([f, a, b]) => (
+                  <tr key={f} className="hover:bg-muted/40">
+                    <td className="p-4 font-bold">{f}</td>
+                    <td className="p-4 text-foreground"><span className="text-[color:var(--success)] mr-1.5 font-bold">✓</span>{a}</td>
+                    <td className="p-4 text-foreground/60"><span className="text-[color:var(--danger)] mr-1.5 font-bold">✕</span>{b}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      {/* Insurance & Liability */}
+      <section id="insurance" className="py-16 sm:py-20 border-b border-border scroll-mt-20">
+        <div className="container-page grid lg:grid-cols-3 gap-8 items-start">
+          <div className="lg:col-span-1">
+            <span className="text-accent font-bold uppercase tracking-widest text-xs">Safety & Trust</span>
+            <h2 className="text-3xl sm:text-5xl font-display mt-3 mb-4">INSURANCE & LIABILITY</h2>
+            <p className="text-foreground/70 mb-6">Every load moves under our basic liability cover. High-value consignments can add in-transit insurance at checkout.</p>
+            <a href="tel:9322662939" className="inline-block border-2 border-foreground px-5 py-3 text-xs font-bold uppercase tracking-widest hover:bg-foreground hover:text-white transition-colors">Talk to Claims Desk</a>
+          </div>
+          <div className="lg:col-span-2 grid sm:grid-cols-2 gap-4">
+            <div className="border-2 border-[color:var(--success)]/40 bg-[color:var(--success)]/5 p-5">
+              <div className="text-[10px] font-bold uppercase tracking-widest text-[color:var(--success)] mb-2">✓ What's Covered</div>
+              <ul className="text-sm space-y-2 text-foreground/85">
+                <li>• Physical damage during transit up to ₹25,000 (basic)</li>
+                <li>• Full declared-value cover with add-on insurance</li>
+                <li>• Loss / theft during authorized carrier custody</li>
+                <li>• Accident damage on booked route</li>
+              </ul>
+            </div>
+            <div className="border-2 border-[color:var(--danger)]/30 bg-[color:var(--danger)]/5 p-5">
+              <div className="text-[10px] font-bold uppercase tracking-widest text-[color:var(--danger)] mb-2">✕ What's Not Covered</div>
+              <ul className="text-sm space-y-2 text-foreground/85">
+                <li>• Undeclared valuables, cash, jewellery</li>
+                <li>• Pre-existing packaging damage</li>
+                <li>• Prohibited or illegal goods</li>
+                <li>• Natural calamities without add-on cover</li>
+              </ul>
+            </div>
+            <div className="sm:col-span-2 bg-card border border-border p-5">
+              <div className="text-[10px] font-bold uppercase tracking-widest text-primary mb-2">How to Claim</div>
+              <ol className="text-sm space-y-1.5 text-foreground/85 font-mono">
+                <li><span className="text-accent font-bold">1.</span> Report within 24 hrs on WhatsApp or call 9322662939</li>
+                <li><span className="text-accent font-bold">2.</span> Share booking ID, photos, and copy of e-way bill</li>
+                <li><span className="text-accent font-bold">3.</span> Claims desk verifies with driver & carrier (2–3 days)</li>
+                <li><span className="text-accent font-bold">4.</span> Approved amount credited to your bank in 7 working days</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+
       {/* Admin Panel Info */}
       <section id="admin" className="py-16 sm:py-20 bg-muted/50 border-b border-border scroll-mt-20">
         <div className="container-page">
