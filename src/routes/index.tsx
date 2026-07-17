@@ -172,32 +172,45 @@ function QuickQuote() {
           </div>
         </div>
 
-        {/* Live fare card */}
-        <div className="border border-foreground/15 bg-muted/40 p-3.5 font-mono text-xs">
-          <div className="flex justify-between"><span className="opacity-60">Distance (est.)</span><span>{km ? km + " km" : "—"}</span></div>
-          <div className="flex justify-between"><span className="opacity-60">Fare ({inr(t.rate)}/km)</span><span>{km ? inr(fare) : "—"}</span></div>
-          <div className="flex justify-between"><span className="opacity-60">Loading + toll</span><span>{km ? inr(t.base) : "—"}</span></div>
-          <div className="flex justify-between"><span className="opacity-60">Payload ({weightKg ? weightKg.toLocaleString("en-IN") + " kg" : "0 kg"} × ₹{PAYLOAD_RATE})</span><span>{km && weightKg ? inr(payloadCharge) : "—"}</span></div>
-          <div className="flex justify-between"><span className="opacity-60">GST 5%</span><span>{km ? inr(gst) : "—"}</span></div>
-          <div className="border-t border-foreground/20 mt-2 pt-2 flex justify-between items-center">
-            <span className="font-display tracking-wider text-sm">ESTIMATE</span>
-            <span className="font-display text-2xl text-primary tracking-tight">{km ? inr(total) : "—"}</span>
+        {/* Live fare card — prominent */}
+        <div className="relative border-2 border-foreground bg-gradient-to-br from-accent/10 via-card to-card p-4 sm:p-5 shadow-[4px_4px_0_0_hsl(215_68%_14%/0.9)]">
+          <div className="flex items-center justify-between mb-2">
+            <span className="text-[10px] font-mono uppercase tracking-widest text-foreground/60 flex items-center gap-1.5"><span className="size-1.5 rounded-full bg-primary animate-pulse"/>Live estimate</span>
+            <details className="relative">
+              <summary className="cursor-pointer size-5 rounded-full border border-foreground/40 text-[10px] font-bold grid place-items-center hover:bg-foreground hover:text-white transition-colors list-none">i</summary>
+              <div className="absolute right-0 top-7 z-20 w-64 bg-foreground text-white p-3 text-[11px] font-mono leading-relaxed shadow-xl">
+                <div className="font-bold text-accent mb-1">HOW PRICING WORKS</div>
+                Distance × Truck-rate + Loading/Toll + (Weight × ₹{PAYLOAD_RATE}/kg) + 5% GST. No hidden charges — pay after delivery.
+              </div>
+            </details>
+          </div>
+          <div className="font-mono text-[11px] sm:text-xs space-y-1">
+            <div className="flex justify-between"><span className="opacity-60">Distance</span><span className="font-bold">{km ? km + " km" : "—"}</span></div>
+            <div className="flex justify-between"><span className="opacity-60">Fare ({inr(t.rate)}/km)</span><span>{km ? inr(fare) : "—"}</span></div>
+            <div className="flex justify-between"><span className="opacity-60">Loading + toll</span><span>{km ? inr(t.base) : "—"}</span></div>
+            <div className="flex justify-between"><span className="opacity-60">Payload × ₹{PAYLOAD_RATE}/kg</span><span>{km && weightKg ? inr(payloadCharge) : "—"}</span></div>
+            <div className="flex justify-between"><span className="opacity-60">GST 5%</span><span>{km ? inr(gst) : "—"}</span></div>
+          </div>
+          <div className="mt-3 pt-3 border-t-2 border-dashed border-foreground/20 flex justify-between items-baseline">
+            <span className="font-display tracking-widest text-base sm:text-lg">TOTAL</span>
+            <span className="font-display text-3xl sm:text-4xl text-primary tracking-tight">{km ? inr(total) : "—"}</span>
           </div>
         </div>
 
-        <button type="submit" disabled={!canSubmit} className="w-full bg-foreground text-white py-4 font-display text-xl tracking-widest hover:bg-primary transition-colors cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed">
-          BOOK THIS TRUCK →
+        <button type="submit" disabled={!canSubmit} className="w-full bg-primary text-white py-5 font-display text-2xl sm:text-3xl tracking-widest hover:bg-accent transition-colors cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed shadow-lg">
+          BOOK NOW →
         </button>
-        <p className="text-[10px] text-center font-mono uppercase tracking-wider text-foreground/50">Verified driver assigned · Pay after delivery · GPS tracking</p>
+        <p className="text-[10px] text-center font-mono uppercase tracking-wider text-foreground/60">Verified driver · Pay after delivery · GPS tracking · No hidden charges</p>
       </form>
     </div>
   );
 }
 
 
+
 function Index() {
   return (
-    <div className="min-h-screen font-sans text-foreground bg-background selection:bg-primary/20">
+    <div className="min-h-screen font-sans text-foreground bg-background selection:bg-primary/20 pb-14 lg:pb-0">
       {/* Top trust strip */}
       <div className="bg-foreground text-white text-[11px] sm:text-xs">
         <div className="container-page h-9 flex items-center justify-between gap-4 font-mono uppercase tracking-wider">
@@ -268,23 +281,50 @@ function Index() {
             </div>
             <div className="grid grid-cols-3 gap-2 sm:gap-6 border-t border-border pt-6">
               <div>
-                <div className="font-mono text-xl sm:text-2xl font-bold">99.4%</div>
-                <div className="text-[9px] sm:text-[10px] uppercase tracking-widest opacity-60">On-time Delivery</div>
+                <div className="font-display text-3xl sm:text-5xl text-primary tracking-tight leading-none">99.4<span className="text-xl sm:text-2xl">%</span></div>
+                <div className="text-[9px] sm:text-[10px] uppercase tracking-widest opacity-60 font-bold mt-1">On-time Delivery</div>
               </div>
               <div className="border-l border-border pl-3 sm:pl-6">
-                <div className="font-mono text-xl sm:text-2xl font-bold">24/7</div>
-                <div className="text-[9px] sm:text-[10px] uppercase tracking-widest opacity-60">Live Support</div>
+                <div className="font-display text-3xl sm:text-5xl text-primary tracking-tight leading-none">24<span className="text-xl sm:text-2xl">/7</span></div>
+                <div className="text-[9px] sm:text-[10px] uppercase tracking-widest opacity-60 font-bold mt-1">Live Support</div>
               </div>
               <div className="border-l border-border pl-3 sm:pl-6">
-                <div className="font-mono text-xl sm:text-2xl font-bold">4%</div>
-                <div className="text-[9px] sm:text-[10px] uppercase tracking-widest opacity-60">Owner Commission</div>
+                <div className="font-display text-3xl sm:text-5xl text-accent tracking-tight leading-none">96<span className="text-xl sm:text-2xl">%</span></div>
+                <div className="text-[9px] sm:text-[10px] uppercase tracking-widest opacity-60 font-bold mt-1">Owner Payout</div>
               </div>
             </div>
+
           </div>
 
           {/* Booking Widget */}
           <QuickQuote />
 
+        </div>
+      </section>
+
+      {/* Live activity ticker */}
+      <section aria-label="Recent activity" className="border-b border-border bg-foreground text-white overflow-hidden">
+        <div className="container-page py-2.5 flex items-center gap-4">
+          <span className="shrink-0 flex items-center gap-2 text-[10px] font-mono uppercase tracking-widest text-accent"><span className="size-1.5 rounded-full bg-accent animate-pulse"/>Live</span>
+          <div className="flex-1 overflow-hidden relative">
+            <div className="flex gap-10 whitespace-nowrap animate-[ticker_40s_linear_infinite] text-xs sm:text-sm font-mono">
+              {[
+                "✓ 5-ton load delivered · Pune → Mumbai · 10 min ago",
+                "✓ Tata Ace booked · Nashik local · 18 min ago",
+                "✓ 32ft dispatched · Nagpur → Aurangabad · 27 min ago",
+                "✓ 4-ton parcel picked up · Thane → Kolhapur · 42 min ago",
+                "✓ Container booked · Solapur → Mumbai · 1 hr ago",
+                "✓ Owner registered · MH-14 Pune · 2 hr ago",
+              ].concat([
+                "✓ 5-ton load delivered · Pune → Mumbai · 10 min ago",
+                "✓ Tata Ace booked · Nashik local · 18 min ago",
+                "✓ 32ft dispatched · Nagpur → Aurangabad · 27 min ago",
+                "✓ 4-ton parcel picked up · Thane → Kolhapur · 42 min ago",
+              ]).map((t, i) => (
+                <span key={i} className="text-white/85">{t}</span>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 
@@ -298,12 +338,13 @@ function Index() {
             { k: "4.8★", v: "Customer Rating" },
           ].map((s) => (
             <div key={s.v}>
-              <div className="font-display text-3xl sm:text-4xl text-primary">{s.k}</div>
-              <div className="text-[10px] sm:text-xs uppercase tracking-widest text-foreground/60 font-bold">{s.v}</div>
+              <div className="font-display text-4xl sm:text-5xl text-primary tracking-tight">{s.k}</div>
+              <div className="text-[10px] sm:text-xs uppercase tracking-widest text-foreground/60 font-bold mt-1">{s.v}</div>
             </div>
           ))}
         </div>
       </section>
+
 
       {/* How it Works */}
       <section id="how" className="py-16 sm:py-20 border-b border-border scroll-mt-20">
@@ -407,20 +448,32 @@ function Index() {
           <h2 className="text-3xl sm:text-5xl font-display mt-3 mb-10">TRUSTED BY BUSINESSES</h2>
           <div className="grid md:grid-cols-3 gap-6">
             {[
-              { n: "Priya Deshmukh", role: "Furniture Retailer · Pune", q: "Vivek Transportt has been our go-to logistics partner for 2 years. On-time, every time." },
-              { n: "Anil Patil", role: "FMCG Distributor · Nashik", q: "Transparent pricing and excellent driver coordination. Saved us 20% on monthly logistics." },
-              { n: "Sneha Kulkarni", role: "E-commerce · Mumbai", q: "Booking is so simple. The team picks up within hours and tracking is fully live." },
+              { n: "Priya Deshmukh", role: "Furniture Retailer", city: "Pune", biz: "Deshmukh Furnitures", q: "Vivek Transportt has been our go-to logistics partner for 2 years. On-time, every time.", color: "F97316" },
+              { n: "Anil Patil", role: "FMCG Distributor", city: "Nashik", biz: "Patil Traders", q: "Transparent pricing and excellent driver coordination. Saved us 20% on monthly logistics.", color: "0B1F3A" },
+              { n: "Sneha Kulkarni", role: "E-commerce Owner", city: "Mumbai", biz: "Wraplynn.in", q: "Booking is so simple. The team picks up within hours and tracking is fully live.", color: "22C55E" },
             ].map((t) => (
-              <figure key={t.n} className="bg-card border border-border p-6 hover:border-primary transition-colors">
+              <figure key={t.n} className="bg-card border border-border p-6 hover:border-primary hover:shadow-lg transition-all">
                 <div className="text-accent text-xl mb-3">★★★★★</div>
-                <blockquote className="text-foreground/80 mb-5 leading-relaxed">"{t.q}"</blockquote>
-                <figcaption>
-                  <div className="font-bold text-sm">{t.n}</div>
-                  <div className="text-xs font-mono uppercase text-foreground/50">{t.role}</div>
+                <blockquote className="text-foreground/85 mb-5 leading-relaxed text-[15px]">"{t.q}"</blockquote>
+                <figcaption className="flex items-center gap-3 pt-4 border-t border-border">
+                  <img
+                    src={`https://ui-avatars.com/api/?name=${encodeURIComponent(t.n)}&background=${t.color}&color=fff&size=96&bold=true`}
+                    alt={t.n}
+                    width={48}
+                    height={48}
+                    loading="lazy"
+                    className="size-12 rounded-full shrink-0"
+                  />
+                  <div className="min-w-0">
+                    <div className="font-bold text-sm truncate">{t.n}</div>
+                    <div className="text-[11px] font-mono uppercase text-foreground/60 truncate">{t.role} · {t.city}</div>
+                    <div className="text-[11px] text-primary font-semibold truncate">{t.biz}</div>
+                  </div>
                 </figcaption>
               </figure>
             ))}
           </div>
+
         </div>
       </section>
 
@@ -436,13 +489,19 @@ function Index() {
           </div>
           <div>
             <span className="text-primary font-bold uppercase tracking-widest text-xs">Truck Owner Program</span>
-            <h2 className="text-3xl sm:text-6xl font-display mt-3 mb-6 leading-none italic">EARN WITH <br />YOUR TRUCK</h2>
-            <p className="text-foreground/70 mb-8 max-w-md">Add your truck to Vivek Transportt and start receiving bookings within 48 hours. We run on a transparent commission model — you keep the rest.</p>
+            <h2 className="font-display mt-3 mb-4 leading-[0.9]">
+              <span className="block text-5xl sm:text-7xl text-accent tracking-tight">EARN 96%</span>
+              <span className="block text-2xl sm:text-4xl italic text-foreground/80 mt-1">OF EVERY FARE</span>
+            </h2>
+            <div className="inline-flex items-center gap-2 bg-foreground text-white px-3 py-1.5 mb-5 text-[11px] font-mono uppercase tracking-widest">
+              <span className="text-accent">Only 4% commission</span> · No monthly fee · No hidden cuts
+            </div>
+            <p className="text-foreground/70 mb-8 max-w-md">Add your truck to Vivek Transportt and start receiving bookings within 48 hours. India's most transparent commission — you keep 96 rupees of every 100.</p>
             <ul className="space-y-5 mb-8">
               {[
                 { n: "01", t: "Guaranteed Backhauls", d: "Never drive an empty truck. We optimize your return journeys." },
-                { n: "02", t: "Timely Payments", d: "Get paid within 48 hours of delivery completion. No hassles." },
-                { n: "03", t: "Transparent Commission", d: "Fixed 4% commission on successful bookings. That's it." },
+                { n: "02", t: "48-Hour Payments", d: "Get paid within 48 hours of delivery completion. Direct to bank." },
+                { n: "03", t: "You Keep 96%", d: "Flat 4% platform fee on completed bookings. No surprises, no upsells." },
               ].map((b) => (
                 <li key={b.n} className="flex gap-4">
                   <span className="bg-foreground text-background size-7 rounded-full flex items-center justify-center font-mono text-xs font-bold shrink-0">{b.n}</span>
@@ -455,6 +514,7 @@ function Index() {
             </ul>
             <PartnerForm />
           </div>
+
         </div>
       </section>
 
@@ -482,6 +542,86 @@ function Index() {
           </div>
         </div>
       </section>
+
+      {/* Why Choose Us — comparison table */}
+      <section className="py-16 sm:py-20 border-b border-border bg-muted/30">
+        <div className="container-page">
+          <span className="text-primary font-bold uppercase tracking-widest text-xs">The Difference</span>
+          <h2 className="text-3xl sm:text-5xl font-display mt-3 mb-3">WHY CHOOSE VIVEK TRANSPORTT</h2>
+          <p className="text-foreground/60 mb-8 max-w-2xl">See how we compare with traditional, unorganized transport agents across Maharashtra.</p>
+          <div className="overflow-x-auto border-2 border-foreground bg-card">
+            <table className="w-full text-sm">
+              <thead>
+                <tr className="bg-foreground text-white">
+                  <th className="text-left p-4 font-display tracking-widest text-base">FEATURE</th>
+                  <th className="text-left p-4 font-display tracking-widest text-base bg-primary">VIVEK TRANSPORTT</th>
+                  <th className="text-left p-4 font-display tracking-widest text-base text-white/60">TRADITIONAL AGENTS</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-border">
+                {[
+                  ["Pricing", "Transparent · fixed formula", "Negotiated · varies daily"],
+                  ["Driver Verification", "Background checks + RC verified", "Rarely verified"],
+                  ["GPS Tracking", "Live · shared on WhatsApp", "Phone calls only"],
+                  ["Payment Terms", "Pay after delivery", "Advance demanded"],
+                  ["Commission to Owner", "Flat 4% (you keep 96%)", "10–20% + hidden cuts"],
+                  ["Booking Time", "60 seconds online", "Hours of phone tag"],
+                  ["Support", "24×7 dispatch team", "Office hours only"],
+                ].map(([f, a, b]) => (
+                  <tr key={f} className="hover:bg-muted/40">
+                    <td className="p-4 font-bold">{f}</td>
+                    <td className="p-4 text-foreground"><span className="text-[color:var(--success)] mr-1.5 font-bold">✓</span>{a}</td>
+                    <td className="p-4 text-foreground/60"><span className="text-[color:var(--danger)] mr-1.5 font-bold">✕</span>{b}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      {/* Insurance & Liability */}
+      <section id="insurance" className="py-16 sm:py-20 border-b border-border scroll-mt-20">
+        <div className="container-page grid lg:grid-cols-3 gap-8 items-start">
+          <div className="lg:col-span-1">
+            <span className="text-accent font-bold uppercase tracking-widest text-xs">Safety & Trust</span>
+            <h2 className="text-3xl sm:text-5xl font-display mt-3 mb-4">INSURANCE & LIABILITY</h2>
+            <p className="text-foreground/70 mb-6">Every load moves under our basic liability cover. High-value consignments can add in-transit insurance at checkout.</p>
+            <a href="tel:9322662939" className="inline-block border-2 border-foreground px-5 py-3 text-xs font-bold uppercase tracking-widest hover:bg-foreground hover:text-white transition-colors">Talk to Claims Desk</a>
+          </div>
+          <div className="lg:col-span-2 grid sm:grid-cols-2 gap-4">
+            <div className="border-2 border-[color:var(--success)]/40 bg-[color:var(--success)]/5 p-5">
+              <div className="text-[10px] font-bold uppercase tracking-widest text-[color:var(--success)] mb-2">✓ What's Covered</div>
+              <ul className="text-sm space-y-2 text-foreground/85">
+                <li>• Physical damage during transit up to ₹25,000 (basic)</li>
+                <li>• Full declared-value cover with add-on insurance</li>
+                <li>• Loss / theft during authorized carrier custody</li>
+                <li>• Accident damage on booked route</li>
+              </ul>
+            </div>
+            <div className="border-2 border-[color:var(--danger)]/30 bg-[color:var(--danger)]/5 p-5">
+              <div className="text-[10px] font-bold uppercase tracking-widest text-[color:var(--danger)] mb-2">✕ What's Not Covered</div>
+              <ul className="text-sm space-y-2 text-foreground/85">
+                <li>• Undeclared valuables, cash, jewellery</li>
+                <li>• Pre-existing packaging damage</li>
+                <li>• Prohibited or illegal goods</li>
+                <li>• Natural calamities without add-on cover</li>
+              </ul>
+            </div>
+            <div className="sm:col-span-2 bg-card border border-border p-5">
+              <div className="text-[10px] font-bold uppercase tracking-widest text-primary mb-2">How to Claim</div>
+              <ol className="text-sm space-y-1.5 text-foreground/85 font-mono">
+                <li><span className="text-accent font-bold">1.</span> Report within 24 hrs on WhatsApp or call 9322662939</li>
+                <li><span className="text-accent font-bold">2.</span> Share booking ID, photos, and copy of e-way bill</li>
+                <li><span className="text-accent font-bold">3.</span> Claims desk verifies with driver & carrier (2–3 days)</li>
+                <li><span className="text-accent font-bold">4.</span> Approved amount credited to your bank in 7 working days</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
 
       {/* Admin Panel Info */}
       <section id="admin" className="py-16 sm:py-20 bg-muted/50 border-b border-border scroll-mt-20">
@@ -671,17 +811,32 @@ function Index() {
         </div>
       </footer>
 
-      {/* Floating WhatsApp / Call */}
-      <a
-        href="tel:9322662939"
-        aria-label="Call Vivek Transportt"
-        className="fixed bottom-5 right-5 z-50 bg-primary text-white size-14 rounded-full shadow-2xl grid place-items-center hover:scale-110 transition-transform"
-      >
-        <span className="text-2xl">📞</span>
-      </a>
+      {/* Sticky mobile CTA bar */}
+      <div className="lg:hidden fixed bottom-0 inset-x-0 z-40 bg-foreground border-t-2 border-accent shadow-[0_-4px_20px_rgba(0,0,0,0.15)] grid grid-cols-2 gap-px">
+        <a href="tel:9322662939" aria-label="Call dispatch" className="flex items-center justify-center gap-2 py-3.5 text-white font-bold text-sm uppercase tracking-wider hover:bg-primary transition-colors">
+          <span>📞</span> Call
+        </a>
+        <a href="#quote" aria-label="Get instant quote" className="flex items-center justify-center gap-2 py-3.5 bg-accent text-white font-bold text-sm uppercase tracking-wider hover:bg-primary transition-colors">
+          Get Quote →
+        </a>
+      </div>
+
+      {/* Floating WhatsApp + Call (desktop + mobile above sticky bar) */}
+      <div className="fixed right-4 sm:right-5 bottom-20 lg:bottom-5 z-40 flex flex-col gap-3">
+        <a
+          href="https://wa.me/919322662939?text=Hi%20Vivek%20Transportt%2C%20I%20need%20a%20truck%20for%20%5BPickup%5D%20to%20%5BDrop%5D"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Chat on WhatsApp"
+          className="bg-[#25D366] text-white size-14 rounded-full shadow-2xl grid place-items-center hover:scale-110 transition-transform ring-4 ring-white"
+        >
+          <svg viewBox="0 0 24 24" className="w-7 h-7 fill-current" aria-hidden><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12.026 2C6.51 2 2.032 6.478 2.032 11.99c0 1.762.463 3.48 1.339 4.997L2 22l5.116-1.338c1.462.796 3.111 1.246 4.91 1.246h.005c5.515 0 9.998-4.478 9.998-9.99 0-2.67-1.038-5.183-2.927-7.073C17.211 3.041 14.699 2 12.026 2z"/></svg>
+        </a>
+      </div>
     </div>
   );
 }
+
 
 const COMMISSION_PCT = 4;
 const TRUCK_TYPES = ["Tata Ace (750 kg)", "Pickup (1.5 T)", "Eicher 14ft (3 T)", "Tata 407 (2.5 T)", "Tata LPT 1109 (6 T)", "10-Wheeler (15 T)", "12-Wheeler (20 T)", "Trailer (25 T+)"];
@@ -795,18 +950,26 @@ function TrackingWidget() {
 
   return (
     <div className="bg-white/5 backdrop-blur border border-white/15 p-5 sm:p-7">
-      <form onSubmit={submit} className="flex flex-col sm:flex-row gap-3 mb-6">
+      <form onSubmit={submit} className="flex flex-col sm:flex-row gap-3 mb-3">
         <input
           value={id}
           onChange={(e) => setId(e.target.value)}
           placeholder="Enter Tracking ID (e.g. VT-A9B7C2)"
           aria-label="Tracking ID"
-          className="flex-1 bg-white/10 border border-white/20 px-4 py-3.5 text-sm text-white placeholder:text-white/50 focus:outline-none focus:border-accent"
+          className="flex-1 bg-white/10 border border-white/20 px-4 py-4 text-base text-white placeholder:text-white/50 focus:outline-none focus:border-accent"
         />
-        <button type="submit" className="bg-accent text-white px-6 py-3.5 text-sm font-bold uppercase tracking-wider hover:bg-white hover:text-primary transition-colors">
+        <button type="submit" className="bg-accent text-white px-6 py-4 text-sm font-bold uppercase tracking-wider hover:bg-white hover:text-primary transition-colors">
           Track →
         </button>
       </form>
+      <button
+        type="button"
+        onClick={() => { setId("VT-DEMO23"); const hash = [..."VT-DEMO23"].reduce((a, c) => a + c.charCodeAt(0), 0); setResult({ id: "VT-DEMO23", stage: hash % TRACK_STAGES.length }); }}
+        className="text-[11px] font-mono uppercase tracking-widest text-accent hover:text-white mb-6 cursor-pointer"
+      >
+        → Try sample: VT-DEMO23
+      </button>
+
 
       {result && (
         <div className="animate-entry">
