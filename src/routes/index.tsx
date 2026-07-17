@@ -172,27 +172,40 @@ function QuickQuote() {
           </div>
         </div>
 
-        {/* Live fare card */}
-        <div className="border border-foreground/15 bg-muted/40 p-3.5 font-mono text-xs">
-          <div className="flex justify-between"><span className="opacity-60">Distance (est.)</span><span>{km ? km + " km" : "—"}</span></div>
-          <div className="flex justify-between"><span className="opacity-60">Fare ({inr(t.rate)}/km)</span><span>{km ? inr(fare) : "—"}</span></div>
-          <div className="flex justify-between"><span className="opacity-60">Loading + toll</span><span>{km ? inr(t.base) : "—"}</span></div>
-          <div className="flex justify-between"><span className="opacity-60">Payload ({weightKg ? weightKg.toLocaleString("en-IN") + " kg" : "0 kg"} × ₹{PAYLOAD_RATE})</span><span>{km && weightKg ? inr(payloadCharge) : "—"}</span></div>
-          <div className="flex justify-between"><span className="opacity-60">GST 5%</span><span>{km ? inr(gst) : "—"}</span></div>
-          <div className="border-t border-foreground/20 mt-2 pt-2 flex justify-between items-center">
-            <span className="font-display tracking-wider text-sm">ESTIMATE</span>
-            <span className="font-display text-2xl text-primary tracking-tight">{km ? inr(total) : "—"}</span>
+        {/* Live fare card — prominent */}
+        <div className="relative border-2 border-foreground bg-gradient-to-br from-accent/10 via-card to-card p-4 sm:p-5 shadow-[4px_4px_0_0_hsl(215_68%_14%/0.9)]">
+          <div className="flex items-center justify-between mb-2">
+            <span className="text-[10px] font-mono uppercase tracking-widest text-foreground/60 flex items-center gap-1.5"><span className="size-1.5 rounded-full bg-primary animate-pulse"/>Live estimate</span>
+            <details className="relative">
+              <summary className="cursor-pointer size-5 rounded-full border border-foreground/40 text-[10px] font-bold grid place-items-center hover:bg-foreground hover:text-white transition-colors list-none">i</summary>
+              <div className="absolute right-0 top-7 z-20 w-64 bg-foreground text-white p-3 text-[11px] font-mono leading-relaxed shadow-xl">
+                <div className="font-bold text-accent mb-1">HOW PRICING WORKS</div>
+                Distance × Truck-rate + Loading/Toll + (Weight × ₹{PAYLOAD_RATE}/kg) + 5% GST. No hidden charges — pay after delivery.
+              </div>
+            </details>
+          </div>
+          <div className="font-mono text-[11px] sm:text-xs space-y-1">
+            <div className="flex justify-between"><span className="opacity-60">Distance</span><span className="font-bold">{km ? km + " km" : "—"}</span></div>
+            <div className="flex justify-between"><span className="opacity-60">Fare ({inr(t.rate)}/km)</span><span>{km ? inr(fare) : "—"}</span></div>
+            <div className="flex justify-between"><span className="opacity-60">Loading + toll</span><span>{km ? inr(t.base) : "—"}</span></div>
+            <div className="flex justify-between"><span className="opacity-60">Payload × ₹{PAYLOAD_RATE}/kg</span><span>{km && weightKg ? inr(payloadCharge) : "—"}</span></div>
+            <div className="flex justify-between"><span className="opacity-60">GST 5%</span><span>{km ? inr(gst) : "—"}</span></div>
+          </div>
+          <div className="mt-3 pt-3 border-t-2 border-dashed border-foreground/20 flex justify-between items-baseline">
+            <span className="font-display tracking-widest text-base sm:text-lg">TOTAL</span>
+            <span className="font-display text-3xl sm:text-4xl text-primary tracking-tight">{km ? inr(total) : "—"}</span>
           </div>
         </div>
 
-        <button type="submit" disabled={!canSubmit} className="w-full bg-foreground text-white py-4 font-display text-xl tracking-widest hover:bg-primary transition-colors cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed">
-          BOOK THIS TRUCK →
+        <button type="submit" disabled={!canSubmit} className="w-full bg-primary text-white py-5 font-display text-2xl sm:text-3xl tracking-widest hover:bg-accent transition-colors cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed shadow-lg">
+          BOOK NOW →
         </button>
-        <p className="text-[10px] text-center font-mono uppercase tracking-wider text-foreground/50">Verified driver assigned · Pay after delivery · GPS tracking</p>
+        <p className="text-[10px] text-center font-mono uppercase tracking-wider text-foreground/60">Verified driver · Pay after delivery · GPS tracking · No hidden charges</p>
       </form>
     </div>
   );
 }
+
 
 
 function Index() {
