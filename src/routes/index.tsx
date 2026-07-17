@@ -302,6 +302,32 @@ function Index() {
         </div>
       </section>
 
+      {/* Live activity ticker */}
+      <section aria-label="Recent activity" className="border-b border-border bg-foreground text-white overflow-hidden">
+        <div className="container-page py-2.5 flex items-center gap-4">
+          <span className="shrink-0 flex items-center gap-2 text-[10px] font-mono uppercase tracking-widest text-accent"><span className="size-1.5 rounded-full bg-accent animate-pulse"/>Live</span>
+          <div className="flex-1 overflow-hidden relative">
+            <div className="flex gap-10 whitespace-nowrap animate-[ticker_40s_linear_infinite] text-xs sm:text-sm font-mono">
+              {[
+                "✓ 5-ton load delivered · Pune → Mumbai · 10 min ago",
+                "✓ Tata Ace booked · Nashik local · 18 min ago",
+                "✓ 32ft dispatched · Nagpur → Aurangabad · 27 min ago",
+                "✓ 4-ton parcel picked up · Thane → Kolhapur · 42 min ago",
+                "✓ Container booked · Solapur → Mumbai · 1 hr ago",
+                "✓ Owner registered · MH-14 Pune · 2 hr ago",
+              ].concat([
+                "✓ 5-ton load delivered · Pune → Mumbai · 10 min ago",
+                "✓ Tata Ace booked · Nashik local · 18 min ago",
+                "✓ 32ft dispatched · Nagpur → Aurangabad · 27 min ago",
+                "✓ 4-ton parcel picked up · Thane → Kolhapur · 42 min ago",
+              ]).map((t, i) => (
+                <span key={i} className="text-white/85">{t}</span>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Trust bar */}
       <section className="border-b border-border bg-muted/40 py-6">
         <div className="container-page grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
@@ -312,12 +338,13 @@ function Index() {
             { k: "4.8★", v: "Customer Rating" },
           ].map((s) => (
             <div key={s.v}>
-              <div className="font-display text-3xl sm:text-4xl text-primary">{s.k}</div>
-              <div className="text-[10px] sm:text-xs uppercase tracking-widest text-foreground/60 font-bold">{s.v}</div>
+              <div className="font-display text-4xl sm:text-5xl text-primary tracking-tight">{s.k}</div>
+              <div className="text-[10px] sm:text-xs uppercase tracking-widest text-foreground/60 font-bold mt-1">{s.v}</div>
             </div>
           ))}
         </div>
       </section>
+
 
       {/* How it Works */}
       <section id="how" className="py-16 sm:py-20 border-b border-border scroll-mt-20">
