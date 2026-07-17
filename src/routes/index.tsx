@@ -281,18 +281,19 @@ function Index() {
             </div>
             <div className="grid grid-cols-3 gap-2 sm:gap-6 border-t border-border pt-6">
               <div>
-                <div className="font-mono text-xl sm:text-2xl font-bold">99.4%</div>
-                <div className="text-[9px] sm:text-[10px] uppercase tracking-widest opacity-60">On-time Delivery</div>
+                <div className="font-display text-3xl sm:text-5xl text-primary tracking-tight leading-none">99.4<span className="text-xl sm:text-2xl">%</span></div>
+                <div className="text-[9px] sm:text-[10px] uppercase tracking-widest opacity-60 font-bold mt-1">On-time Delivery</div>
               </div>
               <div className="border-l border-border pl-3 sm:pl-6">
-                <div className="font-mono text-xl sm:text-2xl font-bold">24/7</div>
-                <div className="text-[9px] sm:text-[10px] uppercase tracking-widest opacity-60">Live Support</div>
+                <div className="font-display text-3xl sm:text-5xl text-primary tracking-tight leading-none">24<span className="text-xl sm:text-2xl">/7</span></div>
+                <div className="text-[9px] sm:text-[10px] uppercase tracking-widest opacity-60 font-bold mt-1">Live Support</div>
               </div>
               <div className="border-l border-border pl-3 sm:pl-6">
-                <div className="font-mono text-xl sm:text-2xl font-bold">4%</div>
-                <div className="text-[9px] sm:text-[10px] uppercase tracking-widest opacity-60">Owner Commission</div>
+                <div className="font-display text-3xl sm:text-5xl text-accent tracking-tight leading-none">96<span className="text-xl sm:text-2xl">%</span></div>
+                <div className="text-[9px] sm:text-[10px] uppercase tracking-widest opacity-60 font-bold mt-1">Owner Payout</div>
               </div>
             </div>
+
           </div>
 
           {/* Booking Widget */}
