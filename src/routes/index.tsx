@@ -214,7 +214,7 @@ function QuickQuote() {
 
 function Index() {
   return (
-    <div className="min-h-screen font-sans text-foreground bg-background selection:bg-primary/20 pb-14 lg:pb-0">
+    <div id="top" className="min-h-screen font-sans text-foreground bg-background selection:bg-primary/20 pb-24 lg:pb-0">
       {/* Top trust strip */}
       <div className="bg-foreground text-white text-[11px] sm:text-xs">
         <div className="container-page h-9 flex items-center justify-between gap-4 font-mono uppercase tracking-wider">
