@@ -29,14 +29,18 @@ const CITY_KM: Record<string, number> = {
   Akola: 580, Amravati: 670, Latur: 490, Nagpur: 840,
 };
 
+// Rates benchmarked against 2026 market data (AssureShift, TruckGuru).
+// Kept slightly under aggregator averages (Porter/Vahak) to stay competitive.
 const TRUCKS = [
-  { id: "ace",   label: "Tata Ace Mini · 850 kg",   rate: 18, base: 350,  capacity: 850 },
-  { id: "14ft",  label: "14ft Eicher · 4 Ton",       rate: 28, base: 600,  capacity: 4000 },
-  { id: "20ft",  label: "20ft Container · 7 Ton",    rate: 35, base: 900,  capacity: 7000 },
-  { id: "32ft",  label: "32ft Multi-Axle · 15 Ton",  rate: 42, base: 1500, capacity: 15000 },
+  { id: "ace",   label: "Tata Ace Mini · 850 kg",   rate: 22, base: 400,  capacity: 850 },
+  { id: "14ft",  label: "14ft Eicher · 4 Ton",       rate: 32, base: 700,  capacity: 4000 },
+  { id: "20ft",  label: "20ft Container · 7 Ton",    rate: 38, base: 1000, capacity: 7000 },
+  { id: "32ft",  label: "32ft Multi-Axle · 15 Ton",  rate: 50, base: 1800, capacity: 15000 },
 ];
 
-const PAYLOAD_RATE = 5; // ₹ per kg — current market rate
+// ₹ per kg — loading & handling component (reduced from ₹5 to reflect real
+// market handling charges; competitors bundle this into the base fee).
+const PAYLOAD_RATE = 2;
 
 
 function estimateKm(from: string, to: string) {
