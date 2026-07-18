@@ -29,14 +29,18 @@ const CITY_KM: Record<string, number> = {
   Akola: 580, Amravati: 670, Latur: 490, Nagpur: 840,
 };
 
+// Rates benchmarked against 2026 market data (AssureShift, TruckGuru).
+// Kept slightly under aggregator averages (Porter/Vahak) to stay competitive.
 const TRUCKS = [
-  { id: "ace",   label: "Tata Ace Mini · 850 kg",   rate: 18, base: 350,  capacity: 850 },
-  { id: "14ft",  label: "14ft Eicher · 4 Ton",       rate: 28, base: 600,  capacity: 4000 },
-  { id: "20ft",  label: "20ft Container · 7 Ton",    rate: 35, base: 900,  capacity: 7000 },
-  { id: "32ft",  label: "32ft Multi-Axle · 15 Ton",  rate: 42, base: 1500, capacity: 15000 },
+  { id: "ace",   label: "Tata Ace Mini · 850 kg",   rate: 22, base: 400,  capacity: 850 },
+  { id: "14ft",  label: "14ft Eicher · 4 Ton",       rate: 32, base: 700,  capacity: 4000 },
+  { id: "20ft",  label: "20ft Container · 7 Ton",    rate: 38, base: 1000, capacity: 7000 },
+  { id: "32ft",  label: "32ft Multi-Axle · 15 Ton",  rate: 50, base: 1800, capacity: 15000 },
 ];
 
-const PAYLOAD_RATE = 5; // ₹ per kg — current market rate
+// ₹ per kg — loading & handling component (reduced from ₹5 to reflect real
+// market handling charges; competitors bundle this into the base fee).
+const PAYLOAD_RATE = 2;
 
 
 function estimateKm(from: string, to: string) {
@@ -210,7 +214,7 @@ function QuickQuote() {
 
 function Index() {
   return (
-    <div className="min-h-screen font-sans text-foreground bg-background selection:bg-primary/20 pb-14 lg:pb-0">
+    <div id="top" className="min-h-screen font-sans text-foreground bg-background selection:bg-primary/20 pb-24 lg:pb-0">
       {/* Top trust strip */}
       <div className="bg-foreground text-white text-[11px] sm:text-xs">
         <div className="container-page h-9 flex items-center justify-between gap-4 font-mono uppercase tracking-wider">
@@ -811,28 +815,44 @@ function Index() {
         </div>
       </footer>
 
-      {/* Sticky mobile CTA bar */}
-      <div className="lg:hidden fixed bottom-0 inset-x-0 z-40 bg-foreground border-t-2 border-accent shadow-[0_-4px_20px_rgba(0,0,0,0.15)] grid grid-cols-2 gap-px">
-        <a href="tel:9322662939" aria-label="Call dispatch" className="flex items-center justify-center gap-2 py-3.5 text-white font-bold text-sm uppercase tracking-wider hover:bg-primary transition-colors">
-          <span>📞</span> Call
-        </a>
-        <a href="#quote" aria-label="Get instant quote" className="flex items-center justify-center gap-2 py-3.5 bg-accent text-white font-bold text-sm uppercase tracking-wider hover:bg-primary transition-colors">
-          Get Quote →
-        </a>
-      </div>
+      {/* App-like bottom nav (mobile only) */}
+      <nav aria-label="Quick navigation" className="lg:hidden fixed bottom-0 inset-x-0 z-40 bg-foreground text-white border-t border-white/10 shadow-[0_-8px_24px_rgba(0,0,0,0.25)] pb-safe">
+        <div className="grid grid-cols-5">
+          <a href="#top" aria-label="Home" className="flex flex-col items-center justify-center gap-1 py-2.5 hover:text-accent transition-colors">
+            <svg viewBox="0 0 24 24" className="w-5 h-5 fill-none stroke-current" strokeWidth="2" aria-hidden><path strokeLinecap="round" strokeLinejoin="round" d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1v-9.5Z"/></svg>
+            <span className="text-[9px] font-bold uppercase tracking-wider">Home</span>
+          </a>
+          <a href="#track" aria-label="Track shipment" className="flex flex-col items-center justify-center gap-1 py-2.5 hover:text-accent transition-colors">
+            <svg viewBox="0 0 24 24" className="w-5 h-5 fill-none stroke-current" strokeWidth="2" aria-hidden><path strokeLinecap="round" strokeLinejoin="round" d="M12 21s-7-6.5-7-12a7 7 0 1 1 14 0c0 5.5-7 12-7 12Z"/><circle cx="12" cy="9" r="2.5"/></svg>
+            <span className="text-[9px] font-bold uppercase tracking-wider">Track</span>
+          </a>
+          <a href="#quote" aria-label="Get instant quote" className="relative flex flex-col items-center justify-center -mt-6">
+            <span className="grid place-items-center size-14 rounded-full bg-accent text-white shadow-lg ring-4 ring-foreground">
+              <svg viewBox="0 0 24 24" className="w-7 h-7 fill-none stroke-current" strokeWidth="2.2" aria-hidden><path strokeLinecap="round" strokeLinejoin="round" d="M3 17V7a1 1 0 0 1 1-1h9v11H4a1 1 0 0 1-1-1Z"/><path strokeLinecap="round" strokeLinejoin="round" d="M13 9h4l4 3v5a1 1 0 0 1-1 1h-7V9Z"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg>
+            </span>
+            <span className="text-[9px] font-bold uppercase tracking-wider mt-1 text-accent">Book</span>
+          </a>
+          <a href="#partner" aria-label="Register your truck" className="flex flex-col items-center justify-center gap-1 py-2.5 hover:text-accent transition-colors">
+            <svg viewBox="0 0 24 24" className="w-5 h-5 fill-none stroke-current" strokeWidth="2" aria-hidden><circle cx="12" cy="8" r="3.5"/><path strokeLinecap="round" strokeLinejoin="round" d="M4 20c1.5-3.5 4.5-5 8-5s6.5 1.5 8 5"/></svg>
+            <span className="text-[9px] font-bold uppercase tracking-wider">Owners</span>
+          </a>
+          <a href="tel:9322662939" aria-label="Call dispatch" className="flex flex-col items-center justify-center gap-1 py-2.5 hover:text-accent transition-colors">
+            <svg viewBox="0 0 24 24" className="w-5 h-5 fill-none stroke-current" strokeWidth="2" aria-hidden><path strokeLinecap="round" strokeLinejoin="round" d="M4.5 5.5c0 8 6 14 14 14l1.5-3.5-4-1.5-1.5 2c-2.5-1-4.5-3-5.5-5.5l2-1.5-1.5-4L6 5.5h-1.5Z"/></svg>
+            <span className="text-[9px] font-bold uppercase tracking-wider">Call</span>
+          </a>
+        </div>
+      </nav>
 
-      {/* Floating WhatsApp + Call (desktop + mobile above sticky bar) */}
-      <div className="fixed right-4 sm:right-5 bottom-20 lg:bottom-5 z-40 flex flex-col gap-3">
-        <a
-          href="https://wa.me/919322662939?text=Hi%20Vivek%20Transportt%2C%20I%20need%20a%20truck%20for%20%5BPickup%5D%20to%20%5BDrop%5D"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Chat on WhatsApp"
-          className="bg-[#25D366] text-white size-14 rounded-full shadow-2xl grid place-items-center hover:scale-110 transition-transform ring-4 ring-white"
-        >
-          <svg viewBox="0 0 24 24" className="w-7 h-7 fill-current" aria-hidden><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12.026 2C6.51 2 2.032 6.478 2.032 11.99c0 1.762.463 3.48 1.339 4.997L2 22l5.116-1.338c1.462.796 3.111 1.246 4.91 1.246h.005c5.515 0 9.998-4.478 9.998-9.99 0-2.67-1.038-5.183-2.927-7.073C17.211 3.041 14.699 2 12.026 2z"/></svg>
-        </a>
-      </div>
+      {/* Floating WhatsApp */}
+      <a
+        href="https://wa.me/919322662939?text=Hi%20Vivek%20Transportt%2C%20I%20need%20a%20truck%20for%20%5BPickup%5D%20to%20%5BDrop%5D"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Chat on WhatsApp"
+        className="fixed right-4 sm:right-5 bottom-24 lg:bottom-5 z-40 bg-[#25D366] text-white size-14 rounded-full shadow-2xl grid place-items-center hover:scale-110 transition-transform ring-4 ring-white"
+      >
+        <svg viewBox="0 0 24 24" className="w-7 h-7 fill-current" aria-hidden><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12.026 2C6.51 2 2.032 6.478 2.032 11.99c0 1.762.463 3.48 1.339 4.997L2 22l5.116-1.338c1.462.796 3.111 1.246 4.91 1.246h.005c5.515 0 9.998-4.478 9.998-9.99 0-2.67-1.038-5.183-2.927-7.073C17.211 3.041 14.699 2 12.026 2z"/></svg>
+      </a>
     </div>
   );
 }
